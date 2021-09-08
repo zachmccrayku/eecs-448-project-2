@@ -1,2 +1,2 @@
-# Group 17 Project 1: Battleship
-<small> EECS 448
+# Project 1: Battleship
+<small> Group 17 - EECS 448
