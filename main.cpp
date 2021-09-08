@@ -12,9 +12,9 @@ void run()
   while(1)
   {
     int choice;
-    cout << "1. Start" << endl;
-    cout << "2. Setting" << endl;
-    cout << "3. Quit" << endl;
+    cout << "1. Start" << endl; // start the game and setting 
+    //cout << "2. Setting" << endl;
+    cout << "2. Quit" << endl;
     cin >> choice;
     if(choice ==1)
     { 
@@ -22,11 +22,11 @@ void run()
     }
     if(choice ==2)
     { 
-      setting();
-    }
-    if(choice ==3)
-    {
       break;
+    }
+    if(choice<0 || choice>2)
+    {
+      cout << "Please enter the correct number to start a game or quit!"<< endl;
     }
   }
 }  
