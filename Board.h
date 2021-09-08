@@ -15,6 +15,10 @@ class Board
 
         void printBoard();
 
+        void viewMyboard(string board);
+
+        void viewOpponentboard(string board);
+
 
 
 
