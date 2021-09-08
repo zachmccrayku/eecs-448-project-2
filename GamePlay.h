@@ -1,27 +1,18 @@
 #ifndef GAMEPLAY_H
 #define GAMEPLAY_H
-#include <iostream>
-#include "Ship.h"
-/* include user interaction and board */
+
 using namespace std;
 
 class GamePlay
 {
-    public:
-        GamePlay::~GamePlay();
+private:
 
-        void fireAt(char x, int b);
-
-        bool isHit();
-
-        bool isMissed();
-
-        void hits();
-
-        int getHits();
-
-
-
+public:
+  GamePlay();
+  // a function to convert user's B2 to 1,1 (array indexes/coordinates)
+  string fireAt(); // user chooses coordinates to shoot at
+  bool isSunk(); // did opponents ship sink
+  bool quitGame(); // end game command
 };
 
 #endif

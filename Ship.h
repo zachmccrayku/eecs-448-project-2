@@ -1,28 +1,19 @@
 #ifndef SHIP_H
 #define SHIP_H
+
 #include <iostream>
-/* include other neccesary files */
 using namespace std;
 
-class Ships
+class Ship
 {
-    public:
-        
-        Ships::~Ships();
+  public:
+    Ship();
+    ~Ship();
 
-        void setSize(int length);
-
-        int getSize();
-
-        bool horizontal();
-        //may not need both of these
-        bool vertical();
-
-        void setShip(char a, int x);
-
-        char getLetter();
-
-        int getNumber();
+    bool isHorizontal(); // horizontal or vertical placement
+    bool hasBeenHit(); // has this spot been hit
+    bool isShip(); // does this coordinate contain a ship
 
 };
+
 #endif

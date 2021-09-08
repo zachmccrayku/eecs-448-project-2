@@ -1,27 +1,21 @@
 #ifndef BOARD_H
 #define BOARD_H
+
 #include "Ship.h"
-#include "ViewBoard.h"
-/* include grid and other h files*/
-#include <iostream>
 using namespace std;
 
 class Board
 {
-    public:
-        Board::~Board();
+private:
+  Grid m_grid; // 2D array, of type Ship
+  int m_numShips;
 
-        Ships setShip();
-
-        void printBoard();
-
-        void viewMyboard(string board);
-
-        void viewOpponentboard(string board);
-
-
-
-
-
+public:
+  Board(); // initialize 9x10 board
+  ~Board();
+  void numShips(); // store number of ships in m_numShips
+  void shipPlacement(int numShips); // place ships onto board
+  void viewBoard(); // can show attacks sent to enemy board, or players own board
 };
+
 #endif
