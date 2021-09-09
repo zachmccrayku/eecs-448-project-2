@@ -1,3 +1,10 @@
+/**
+  File Name: Board.h
+  Authors: Regan Janssen, Andrew Loaiza, Chen Lu, Jui Nagarkar, Natasha Shirley
+  Description: Board class that initializes the board and stores the location of the ships
+  Date: Sept. 19, 2021
+  */ 
+
 #ifndef BOARD_H
 #define BOARD_H
 
