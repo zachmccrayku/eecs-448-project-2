@@ -1,3 +1,10 @@
+/**
+  File Name: UserInteraction.h
+  Authors: Regan Janssen, Andrew Loaiza, Chen Lu, Jui Nagarkar, Natasha Shirley
+  Description: Acts as executive class for the game. Initializes players and boards and runs the game
+  Date: Sept. 19, 2021
+  */ 
+
 #ifndef USERINTERACTION_H
 #define USERINTERACTION_H
 
