@@ -16,13 +16,13 @@ bool Ship::isHorizontal()
     {
         for(int i = 0; i < Shipsize; i++)
 		{
-			columns[i] = charValue + i; // refers to the letters on the board, both variables need to be established in gameplay
+			columns[i] = charValue + i; // refers to the letters on the board, both variables need to be established in gameplay or ship
 			row[i] = number; // refers to the number on  the board
         }
     }
     else if (isHorizontal == false)
     {
-        for(int i = 0; i < Shipsize; i++)
+        for(int i = 0; i < Shipsize; i++) // Shipsize also needs to be defined somewhere
         {
             columns[i] = charValue; 
 			row[i] = number +i; 
@@ -32,16 +32,20 @@ bool Ship::isHorizontal()
 
 bool Ship::hasBeenHit(char charValue, int number)
 {
-    for(int i = 0; i < Shipsize; i++)
+    for(int i = 0; i < Shipsize; i++) 
 	{
 
 		if(charValue == column[i] && number == row[i])
 		{
 			return(true); //returns true if ship is located at the column and row specified
 		}
-	}
-	return(false); //returns false if no ship present
-}
+        else
+        {
+	        return(false); //returns false if no ship present
+        }
+    }
+}        
+
 
 bool Ship::isShip(char charValue, int number)
 {
@@ -56,8 +60,8 @@ bool Ship::isShip(char charValue, int number)
 	
         else
         {
-	    cout << "This is an empty space" << endl;
-        return(false); //returns false if no ship present
+	        cout << "This is an empty space" << endl;
+            return(false); //returns false if no ship present
         }
     }
 }
