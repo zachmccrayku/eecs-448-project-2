@@ -1,10 +1,3 @@
-/**
-  File Name: Board.h
-  Authors: Regan Janssen, Andrew Loaiza, Chen Lu, Jui Nagarkar, Natasha Shirley
-  Description: Board class creates grid and places the location of the ship. Allows players to view the board
-  Date: Sept. 19, 2021
-  */ 
-
 #ifndef BOARD_H
 #define BOARD_H
 
@@ -14,13 +7,15 @@ using namespace std;
 class Board
 {
 private:
-  Grid m_grid; // 2D array, of type Ship
+  int numRows = 9;
+  int numCols = 10;
+  Ship m_grid[9][10]; // 2D array, of type Ship
   int m_numShips;
 
 public:
   Board(); // initialize 9x10 board
   ~Board();
-  void numShips(); // store number of ships in m_numShips
+  void getNumShips(int numShips); // store number of ships in m_numShips
   void shipPlacement(int numShips); // place ships onto board
   void viewBoard(); // can show attacks sent to enemy board, or players own board
 };

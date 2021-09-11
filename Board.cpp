@@ -1,39 +1,39 @@
 #include "Board.h"
-#include "Ship.h"
-#include <iostream>
-
-using namespace std;
-
-Board::~Board()
-{
-
-}
 
 Board::Board()
 {
-    for(int x = 0; x < 9; x++)
-    {
-        for(int y = 0; y < 10; y++)
-        {   
-            grid[x][y]='|';
-        
-        }
-    }
+  m_numShips = 0;
 }
 
-void Board::printBoard()
-{
-    
-      cout << "   A B C D E F G H I J " << endl;
+Board::~Board(){}
 
-    for(int x = 0; x < 9; x++)
+void Board::getNumShips(int numShips)
+{
+  m_numShips = numShips;
+}
+
+void Board::shipPlacement(int numShips)
+{
+  // set ships onto grid
+  // could go in UserInteraction
+}
+
+void Board::viewBoard()
+{
+  // view player's own board
+  // view oppoenent's board
+
+  cout << "  A B C D E F G H I J " << endl;
+
+  for(int x = 0; x < 9; x++)
   {
       cout << x + 1 << " ";
 
     for(int y = 0; y < 10; y++)
     {
-      cout << grid[x][y] << "_";
+      cout << m_grid[x][y].gridChar << " ";
     }
     cout << endl;
   }
-}   
+
+}
