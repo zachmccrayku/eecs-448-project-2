@@ -9,12 +9,35 @@ class GamePlay
 private:
 
 public:
+  /*
+  *Initializes Gameplay
+  *@param None
+  */
   GamePlay();
-  ~GamePlay();
+  ~GamePlay(); //avoid memory leaks!
+
   // a function to convert user's B2 to 1,1 (array indexes/coordinates)
-  string fireAt(); // user chooses coordinates to shoot at
-  bool isSunk(); // did opponents ship sink
-  bool quitGame(); // end game command
+
+  /*
+  *User chooses coordinates to shoot at
+  *@param None
+  *@returns the coordinate of the shot
+  */
+  string fireAt(); 
+
+  /*
+  *Checks to see if the opponents ship sunk
+  *@param None
+  *@return boolean value for ship status
+  */
+  bool isSunk(); 
+
+  /*
+  *Command to end the game
+  *@param None
+  *@return boolean value 
+  */
+  bool quitGame(); 
 };
 
 #endif
