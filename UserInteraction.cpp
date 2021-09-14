@@ -75,7 +75,6 @@ void UserInteraction::run()
   playGame();
 }
 
-
 void UserInteraction::viewBoard()
 {
   // view player's own board
@@ -97,13 +96,115 @@ void UserInteraction::viewBoard()
 }
 
 
-void Board::shipPlacement(int numShips)
+void Board::shipPlacement(Board* tempBoard)
 {
   // set ships onto grid
   // called from UserInteraction
 
+  bool isHorizontal;
+  char orientation;
+  string coordinate;
+
   for (int i = 1; i <= m_numShips; i++)
   {
+    // let user choose horizontal or vertical ship placement
+    if (i == 1)
+    {
+      isHorizontal == true;
+    }
+
+    else
+    {
+      do
+      {
+        cout << "Do you want to place your ship horizontal (H) or vertical (V)?: ";
+        cin >> orientation;
+
+        if (orientation != 'H' && orientation != 'V') cout << "Inavlid input. Try again."
+
+      } while (orientation != 'H' && orientation != 'V')
+
+      if (orientation == 'V')
+      {
+        isHorizontal == false;
+        // by default initialized to true in Ship class
+      }
+    }
+
+    // let user choose coordinate
+    cout << "Choose the starting ";
+    if (isHorizontal ? cout << "leftmost" : cout << "topmost");
+    cout << " coordinate where you would like to place your ship.\n";
+
+    cout << "Input number and letter "
+
+
+
+  }
+}void UserInteraction::viewBoard()
+{
+  // view player's own board
+  // view oppoenent's board
+
+  cout << "  A B C D E F G H I J " << endl;
+
+  for(int x = 0; x < 9; x++)
+  {
+      cout << x + 1 << " ";
+
+    for(int y = 0; y < 10; y++)
+    {
+      cout << m_grid[x][y].gridChar << " ";
+    }
+    cout << endl;
+  }
+
+}
+
+
+void Board::shipPlacement(Board* tempBoard)
+{
+  // set ships onto grid
+  // called from UserInteraction
+
+  bool isHorizontal;
+  char orientation;
+  string coordinate;
+
+  for (int i = 1; i <= m_numShips; i++)
+  {
+    // let user choose horizontal or vertical ship placement
+    if (i == 1)
+    {
+      isHorizontal == true;
+    }
+
+    else
+    {
+      do
+      {
+        cout << "Do you want to place your ship horizontal (H) or vertical (V)?: ";
+        cin >> orientation;
+
+        if (orientation != 'H' && orientation != 'V') cout << "Inavlid input. Try again."
+
+      } while (orientation != 'H' && orientation != 'V')
+
+      if (orientation == 'V')
+      {
+        isHorizontal == false;
+        // by default initialized to true in Ship class
+      }
+    }
+
+    // let user choose coordinate
+    cout << "Choose the starting ";
+    if (isHorizontal ? cout << "leftmost" : cout << "topmost");
+    cout << " coordinate where you would like to place your ship.\n";
+
+    cout << "Input number and letter "
+
+
 
   }
 }
