@@ -14,7 +14,6 @@ private:
 public:
   Board(); // initialize 9x10 board
   ~Board();
-  void getNumShips(int numShips); // store number of ships in m_numShips
 };
 
 #endif

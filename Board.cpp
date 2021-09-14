@@ -5,9 +5,7 @@ Board::Board()
   m_numShips = 0;
 }
 
-Board::~Board(){}
-
-void Board::getNumShips(int numShips)
+Board::~Board()
 {
-  m_numShips = numShips;
+  
 }
