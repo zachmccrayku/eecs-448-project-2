@@ -14,6 +14,8 @@ private:
 public:
   Board(); // initialize 9x10 board
   ~Board();
+  void viewBoard();
+  void shipPlacement();
 };
 
 #endif

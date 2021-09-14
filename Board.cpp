@@ -7,5 +7,98 @@ Board::Board()
 
 Board::~Board()
 {
-  
+
+}
+
+void UserInteraction::viewBoard()
+{
+  // view player's own board
+  // view oppoenent's board
+
+  cout << "  A B C D E F G H I J " << endl;
+
+  for(int x = 0; x < 9; x++)
+  {
+    cout << x + 1 << " ";
+
+    for(int y = 0; y < 10; y++)
+    {
+      cout << m_grid[x][y].gridChar << " ";
+    }
+    cout << endl;
+  }
+
+}
+
+
+void Board::shipPlacement()
+{
+  // set ships onto grid
+  // called from UserInteraction
+
+  bool isHorizontal = true;
+  char orientation;
+  string coordinate;
+  int row;
+  int col;
+
+  for (int i = 1; i <= numShips; i++)
+  {
+    // let user choose horizontal or vertical ship placement
+    if (i != 1)
+    {
+      do
+      {
+        cout << "Do you want to place your ship horizontal (H) or vertical (V)?: ";
+        cin >> orientation;
+
+        if (orientation != 'H' && orientation != 'V') cout << "Inavlid input. Try again.";
+
+      } while (orientation != 'H' && orientation != 'V');
+
+      if (orientation == 'V')
+      {
+        isHorizontal = false;
+        // by default initialized to true in Ship class
+      }
+    }
+
+    // let user choose coordinate
+    cout << "Choose the starting ";
+    (isHorizontal ? cout << "leftmost" : cout << "topmost");
+    cout << " coordinate where you would like to place your ship.\n";
+
+    // cout << "Input number and letter [A-J][1-10]: ";
+    // cin >> coordinate;
+    //
+    // for (int i = 0; i < coordinate.length(); i++)
+    // {
+    //
+    // }
+
+    cout << "Input row number: ";
+    cin >> row;
+    cout << "Input column number: ";
+    cin >> col;
+
+    // check if coordinate is valid
+    if (isHorizontal)
+    {
+      for (int j = col; j < i; j++)
+      {
+        m_grid[row][j].placeShip();
+        m_grid[row][j].makeHorizontal(isHorizontal);
+      }
+    }
+
+    else
+    {
+      for (int j = row; j < i; j++)
+      {
+        m_grid[j][col].placeShip();
+        m_grid[j][col].makeHorizontal(isHorizontal);
+      }
+    }
+
+  }
 }
