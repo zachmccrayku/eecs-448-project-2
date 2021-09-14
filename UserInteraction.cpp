@@ -34,7 +34,7 @@ void UserInteraction::playGame()
       cout << "Player 1";
       cout << "***************************";
       player1Board->viewBoard();
-    
+
       cout << "input your number of ships (enter a value between 1-6): ";
       cin >> numShips;
       if(numShips > 6 || numShips <= 0)
@@ -56,7 +56,7 @@ void UserInteraction::playGame()
           cout << "Player 1 where you like to set your ship " + k  "input your col and row" ;
           //check ver
       }
-      //after set player 1 and then go to player 2 
+      //after set player 1 and then go to player 2
     }
     if(choice == 2)
     {
@@ -170,6 +170,8 @@ void Board::shipPlacement(Board* tempBoard)
   bool isHorizontal;
   char orientation;
   string coordinate;
+  int row;
+  int col;
 
   for (int i = 1; i <= m_numShips; i++)
   {
@@ -202,9 +204,20 @@ void Board::shipPlacement(Board* tempBoard)
     if (isHorizontal ? cout << "leftmost" : cout << "topmost");
     cout << " coordinate where you would like to place your ship.\n";
 
-    cout << "Input number and letter "
+    // cout << "Input number and letter [A-J][1-10]: ";
+    // cin >> coordinate;
+    //
+    // for (int i = 0; i < coordinate.length(); i++)
+    // {
+    //
+    // }
 
+    cout << "Input row number: ";
+    cin >> row;
+    cout << "Input column number: ";
+    cin >> col;
 
+    tempBoard[row][col].placeShip();
 
   }
 }
