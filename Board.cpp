@@ -11,9 +11,3 @@ void Board::getNumShips(int numShips)
 {
   m_numShips = numShips;
 }
-
-void Board::shipPlacement(int numShips)
-{
-  // set ships onto grid
-  // could go in UserInteraction
-}

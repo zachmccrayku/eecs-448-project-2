@@ -8,11 +8,13 @@ UserInteraction::UserInteraction()
   //player2Ship = new araay [][];
 }
 
+
 UserInteraction::~UserInteraction()
 {
   delete player1Board;
   delete player2Board;
 }
+
 
 void UserInteraction::playGame()
 {
@@ -60,10 +62,12 @@ void UserInteraction::playGame()
   }
 }
 
+
 void UserInteraction::run()
 {
   playGame();
 }
+
 
 void UserInteraction::viewBoard()
 {
@@ -83,4 +87,16 @@ void UserInteraction::viewBoard()
     cout << endl;
   }
 
+}
+
+
+void Board::shipPlacement(int numShips)
+{
+  // set ships onto grid
+  // called from UserInteraction
+
+  for (int i = 1; i <= m_numShips; i++)
+  {
+
+  }
 }
