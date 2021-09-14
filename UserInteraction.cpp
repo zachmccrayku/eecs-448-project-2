@@ -218,6 +218,7 @@ void Board::shipPlacement(Board* tempBoard)
     cin >> col;
 
     tempBoard[row][col].placeShip();
+    tempBoard[row][col].makeHorizontal(isHorizontal);
 
   }
 }
