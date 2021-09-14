@@ -17,7 +17,6 @@ public:
   ~Board();
   void getNumShips(int numShips); // store number of ships in m_numShips
   void shipPlacement(int numShips); // place ships onto board
-  void viewBoard(); // can show attacks sent to enemy board, or players own board
 };
 
 #endif

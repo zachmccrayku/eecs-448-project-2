@@ -28,22 +28,22 @@ void UserInteraction::playGame()
     if(choice == 1)
     {
       cout << "Game is starting...\n";
-      cout << "***************************"; 
+      cout << "***************************";
       cout << "Player 1";
-      cout << "***************************"; 
+      cout << "***************************";
       player1Board->viewBoard();
       cout << "input your number of ships ";
       int cout;
       cin >> cout;
       for(int k=1; k<=cout; k++)
       {
-          //set each ship  
+          //set each ship
           //if()
           cout << "Player 1 where you like to set your ship " + k  "input your col and row" ;
           //check ver
       }
-      //after set player 1 and then go to player 2 
-      
+      //after set player 1 and then go to player 2
+
 
 
 
@@ -63,4 +63,24 @@ void UserInteraction::playGame()
 void UserInteraction::run()
 {
   playGame();
+}
+
+void UserInteraction::viewBoard()
+{
+  // view player's own board
+  // view oppoenent's board
+
+  cout << "  A B C D E F G H I J " << endl;
+
+  for(int x = 0; x < 9; x++)
+  {
+      cout << x + 1 << " ";
+
+    for(int y = 0; y < 10; y++)
+    {
+      cout << m_grid[x][y].gridChar << " ";
+    }
+    cout << endl;
+  }
+
 }
