@@ -34,18 +34,6 @@ public:
    *@param None
    */
   void run();
-
-  /*
-   *Allows players to view their board as well as the opponents board with their hits and misses
-   *@param None
-   */
-  void viewBoard();
-
-  /*
-   *Ship is placed on the board
-   *@param tempboard- allows for editing of player 1 and player 2 boards
-   */
-  void shipPlacement(Board* tempBoard);
 };
 
 #endif

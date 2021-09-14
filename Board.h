@@ -14,8 +14,18 @@ private:
 public:
   Board(); // initialize 9x10 board
   ~Board();
-  void viewBoard();
-  void shipPlacement();
+
+    /*
+     *Allows players to view their board as well as the opponents board with their hits and misses
+     *@param None
+     */
+    void viewBoard();
+
+    /*
+     *Ship is placed on the board
+     *@param 
+     */
+    void shipPlacement();
 };
 
 #endif
