@@ -11,57 +11,61 @@ class Ship
    **Sets m_ship, m_hasBeenHit to false, m_isHorizontal to true, gridChar to '_'
    *@param None
    */
-    Ship(); //sets m_ship, m_hasBeenHit to false, m_isHorizontal to true, gridChar to '_'
+    Ship(); 
 
-    ~Ship(); //deletes ship
+    /*
+    **Deletes ship
+    *@param None
+    */
+    ~Ship(); 
 
     /*
 	  **Changes to ^ when it is placed, changes to X when it is hit
 	  *@param None
 	  */
-    char gridChar; //changes to ^ when it is placed, changes to X when it is hit
+    char gridChar; 
 
     /*
     **Checks to see whether or not the coordinate contains a ship
 	  *@param None
     */
-    bool m_isShip; // does this coordinate contain a ship
+    bool m_isShip; 
 
     /*
 	  **Checks to see whether or not the ship has been hit 
 	  *@param None
 	  */
-    bool m_hasBeenHit; // has this spot been hit
+    bool m_hasBeenHit; 
 
     /*
 	  **Sets a ships placement to either horizontal or vertical
     *@param None
     */
-    bool m_isHorizontal; // horizontal or vertical placement
+    bool m_isHorizontal; 
 
     /*
 	  **Checks if there is a ship, if not it makes is_ship true 
 	  *@param None
 	  */
-    void placeShip(); //checks if it is a ship, if not makes is_ship true
+    void placeShip(); 
 
     /*
 	  **Marks the ship as hit
 	  *@param None
 	  */ 
-    void hitShip(); //marks the ship as hit
+    void hitShip(); 
 
     /*
 	  **Checks to see if the ship has been sunk
 	  *@param None
 	  */ 
-    void isSunk(); //checks to see if the ship has been sunk
+    void isSunk(); 
 
     /*
 	  **Changes state of m_isHorizontal 
 	  *@param None
 	  */ 
-    void makeHorizontal(); //changes state of m_isHorizontal 
+    void makeHorizontal();  
 };
 
 #endif
