@@ -167,7 +167,7 @@ void Board::shipPlacement(Board* tempBoard)
   // set ships onto grid
   // called from UserInteraction
 
-  bool isHorizontal;
+  bool isHorizontal = true;
   char orientation;
   string coordinate;
   int row;
@@ -176,12 +176,7 @@ void Board::shipPlacement(Board* tempBoard)
   for (int i = 1; i <= m_numShips; i++)
   {
     // let user choose horizontal or vertical ship placement
-    if (i == 1)
-    {
-      isHorizontal == true;
-    }
-
-    else
+    if (i != 1)
     {
       do
       {
@@ -217,8 +212,24 @@ void Board::shipPlacement(Board* tempBoard)
     cout << "Input column number: ";
     cin >> col;
 
-    tempBoard[row][col].placeShip();
-    tempBoard[row][col].makeHorizontal(isHorizontal);
+    // check if coordinate is valid
+    if (isHorizontal)
+    {
+      for (int j = col; col < i; j++)
+      {
+        tempBoard[row][j].placeShip();
+        tempBoard[row][j].makeHorizontal(isHorizontal);
+      }
+    }
+
+    else
+    {
+      for (int j = row; row < i; j++)
+      {
+        tempBoard[j][col].placeShip();
+        tempBoard[j][col].makeHorizontal(isHorizontal);
+      }
+    }
 
   }
 }
