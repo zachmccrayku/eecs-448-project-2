@@ -19,6 +19,8 @@ public:
   ~UserInteraction(); // avoid memory leaks!
   void playGame(); // run calls play game, this is where it all runs
   void run(); // is called from main.cpp
+  void viewBoard();
+  void shipPlacement(Board* tempBoard);
 };
 
 #endif
