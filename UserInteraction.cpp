@@ -31,7 +31,7 @@ void UserInteraction::playGame()
       cout << "Game is starting...\n";
       cout << "***************************";
       cout << "Player 1";
-      cout << "***************************";
+      cout << "***************************\n";
       player1Board->viewBoard();
 
       cout << "input your number of ships (enter a value between 1-6): ";
