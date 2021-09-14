@@ -17,9 +17,10 @@ void Ship::placeShip()
   {
       for(int col=0; col<=9; col++)
       {
-          //check ship 
-          //if();
-          //m_isShip = true
+          if(m_ship == false)
+          {
+            m_isShip = true;
+          }
       }
   }
 }
