@@ -7,16 +7,21 @@ using namespace std;
 class Board
 {
 private:
-  int numRows = 9;
-  int numCols = 10;
+  int numRows = 9; // Sets the number of rows for the board 
+  int numCols = 10; // Sets the number of columns for the board 
   Ship m_grid[9][10]; // 2D array, of type Ship
   int m_numShips;
 
 public:
-  Board(); // initialize 9x10 board
-  ~Board();
+  /*
+  *Initializes a 9x10 board
+  *@param None
+  */
+  Board();
 
-    /*
+  ~Board(); // avoid memory leaks!
+  
+  /*
      *Allows players to view their board as well as the opponents board with their hits and misses
      *@param None
      */
@@ -27,6 +32,6 @@ public:
      *@param
      */
     void shipPlacement();
-};
+  };
 
 #endif
