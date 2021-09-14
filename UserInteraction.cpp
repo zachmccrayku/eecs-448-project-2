@@ -35,11 +35,12 @@ void UserInteraction::playGame()
       cout << "input your number of ships ";
       int cout;
       cin >> cout;
-      for(int k=0; k<=cout; k++)
+      for(int k=1; k<=cout; k++)
       {
           //set each ship  
           //if()
-          cout << "Player 1 what you like to set your ship input your col and row";
+          cout << "Player 1 where you like to set your ship " + k  "input your col and row" ;
+          //check ver
       }
       //after set player 1 and then go to player 2 
       
