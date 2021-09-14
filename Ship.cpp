@@ -20,6 +20,7 @@ void Ship::placeShip()
           if(m_ship == false)
           {
             m_isShip = true;
+            gridChar = '^';
           }
       }
   }
@@ -27,19 +28,21 @@ void Ship::placeShip()
 
 void Ship::hitShip()
 {
-  m_hasBeenHit = false;
-  for{int row=0; row<=9;row++}
-  {
-      for(int col=0; col<=9; col++)
-      {
-          //check ship 
-          //if();
-          //m_hasBeenHit = true
-      }
-  }  
+    if(m_isShip == true && m_hasBeenHit == false)
+    {
+        gridChar = 'X';
+        m_hasBeenHit = true;
+     }
 }
 
-void Ship::makeVertical()
+void Ship::makeHorizontal()
 {
-  m_isHorizontal = false;
+  if(isHorizontal == true)
+  {
+    isHorizontal = false;
+  }
+  else
+  {
+    isHorizontal = true;
+  }
 }
