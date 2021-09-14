@@ -16,9 +16,9 @@ class Ship
     bool m_hasBeenHit; // has this spot been hit
     bool m_isHorizontal; // horizontal or vertical placement
 
-    void placeShip();
-    void hitShip();
-    void makeVertical();
+    void placeShip(); //checks if it is a ship, if not makes is_ship true
+    void hitShip(); //marks the ship as hit
+
 };
 
 #endif
