@@ -10,6 +10,7 @@ private:
   int numRows = 9;
   int numCols = 10;
   Ship m_grid[9][10]; // 2D array, of type Ship
+  int m_numShips;
 
 public:
   Board(); // initialize 9x10 board
@@ -23,7 +24,7 @@ public:
 
     /*
      *Ship is placed on the board
-     *@param 
+     *@param
      */
     void shipPlacement();
 };

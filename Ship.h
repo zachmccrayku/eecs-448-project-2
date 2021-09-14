@@ -11,65 +11,65 @@ class Ship
    *Sets m_ship, m_hasBeenHit to false, m_isHorizontal to true, gridChar to '_'
    *@param None
    */
-    Ship(); 
+    Ship();
 
     /*
     *Deletes ship
     *@param None
     */
-    ~Ship(); 
+    ~Ship();
 
     /*
 	  *Changes to ^ when it is placed, changes to X when it is hit
 	  *@param None
     *@returns character value based on hit or placement
 	  */
-    char gridChar; 
+    char gridChar;
 
     /*
     *Checks to see whether or not the coordinate contains a ship
 	  *@param None
     *@return boolean value for coordinate
     */
-    bool m_isShip; 
+    bool m_isShip;
 
     /*
-	  *Checks to see whether or not the ship has been hit 
+	  *Checks to see whether or not the ship has been hit
 	  *@param None
     *@return boolean value for ship status
 	  */
-    bool m_hasBeenHit; 
+    bool m_hasBeenHit;
 
     /*
 	  *Sets a ships placement to either horizontal or vertical
     *@param None
     *@returns boolean value for horizontal or vertical
     */
-    bool m_isHorizontal; 
+    bool m_isHorizontal;
 
     /*
-	  *Checks if there is a ship, if not it makes is_ship true 
+	  *Checks if there is a ship, if not it makes is_ship true
 	  *@param None
 	  */
-    void placeShip(); 
+    void placeShip();
 
     /*
 	  *Marks the ship as hit
 	  *@param None
-	  */ 
-    void hitShip(); 
+	  */
+    void hitShip();
 
     /*
 	  *Checks to see if the ship has been sunk
 	  *@param None
-	  */ 
-    void isSunk(); 
+	  */
+    void isSunk();
 
     /*
-	  *Changes state of m_isHorizontal 
-	  *@param None
-	  */ 
-    void makeHorizontal();  
+	  *Changes state of m_isHorizontal
+	  *@param bool isHorizontal, if player wants horizontal (true) or vertical (false)
+	  */
+    void makeHorizontal(bool isHorizontal);
 };
 
 #endif

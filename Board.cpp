@@ -10,7 +10,7 @@ Board::~Board()
 
 }
 
-void UserInteraction::viewBoard()
+void Board::viewBoard()
 {
   // view player's own board
   // view oppoenent's board
@@ -42,7 +42,7 @@ void Board::shipPlacement()
   int row;
   int col;
 
-  for (int i = 1; i <= numShips; i++)
+  for (int i = 1; i <= m_numShips; i++)
   {
     // let user choose horizontal or vertical ship placement
     if (i != 1)
