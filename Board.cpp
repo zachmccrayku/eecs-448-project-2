@@ -44,6 +44,8 @@ void Board::shipPlacement()
 
   for (int i = 1; i <= m_numShips; i++)
   {
+    viewBoard(); // show player their current board with ship placements
+
     // let user choose horizontal or vertical ship placement
     if (i != 1)
     {
@@ -76,10 +78,15 @@ void Board::shipPlacement()
     //
     // }
 
-    cout << "Input row number: ";
-    cin >> row;
-    cout << "Input column number: ";
-    cin >> col;
+    do {
+      cout << "Input (array) row number (testing): ";
+      cin >> row;
+    } while(row < 0 || row >= numRows);
+
+    do {
+      cout << "Input (array) column number (testing): ";
+      cin >> col;
+    } while(col < 0 || col >= numCols);
 
     // check if coordinate is valid
     if (isHorizontal)
@@ -99,6 +106,8 @@ void Board::shipPlacement()
         m_grid[j][col].makeHorizontal(isHorizontal);
       }
     }
+    
+    // loop to next iteration
 
   }
 }
