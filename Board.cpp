@@ -74,7 +74,7 @@ void Board::shipPlacement(int numShips)
     cout << "Choose the starting ";
     (isHorizontal ? cout << "leftmost" : cout << "topmost");
     cout << " coordinate where you would like to place your ";
-    isHorizontal ? cout << "1 x " << i : cout << i << " x 1"; 
+    isHorizontal ? cout << "1 x " << i : cout << i << " x 1";
     cout << " ship.\n";
 
     do {
@@ -117,15 +117,14 @@ void Board::shipPlacement(int numShips)
 void Board::fireAt()
 {
   canBeFired = false;
-  do
+  convertString();
+
+  m_grid[fireSpotNum][fireSpotLetter].hitShip();
+
+  if(m_grid[fireSpotNum][fireSpotLetter].getChar() != '^')
   {
-    m_grid[fireSpotNum][fireSpotLetter].hitShip();
-    if(m_grid[fireSpotNum][fireSpotLetter].getChar() != '^')
-    {
-      canBeFired = true;
-    }
+    canBeFired = true;
   }
-  while(canBeFired == false);
 }
 
 void Board::convertString()
@@ -145,12 +144,15 @@ void Board::convertString()
         if(fireSpotLetter >= 65 || fireSpotLetter <= 74)
         {
           fireSpotLetter= fireSpotLetter - 65;
+          canBeFired = true;
         }
         else if(fireSpotLetter >= 97 || fireSpotLetter <= 106)
         {
           fireSpotLetter= fireSpotLetter - 97;
+          canBeFired = true;
         }
       }
+
       else
       {
         cout << "Error! Try Again!";
