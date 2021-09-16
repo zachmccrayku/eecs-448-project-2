@@ -31,27 +31,27 @@ void Board::viewBoard()
 }
 void Board::viewOBoard()
 {
-    cout << "Opponent's Board\n";
-    cout << "  A B C D E F G H I J " << endl;
-    for(int x = 0; x < 9; x++)
+  cout << "Opponent's Board\n";
+  cout << "  A B C D E F G H I J " << endl;
+  for(int x = 0; x < 9; x++)
+  {
+    cout << x + 1 << " ";
+
+    for(int y = 0; y < 10; y++)
     {
-        cout << x + 1 << " ";
 
-        for(int y = 0; y < 10; y++)
-        {
-
-            if(m_grid[x][y].getChar() == '^')
-            {
-                cout << "_";
-            }
-            else
-            {
-                cout << m_grid[x][y].getChar();
-            }
-            cout << m_grid[x][y].getChar() << " ";
-        }
-        cout << endl;
+      if(m_grid[x][y].getChar() == '^')
+      {
+        cout << "_";
+      }
+      else
+      {
+        cout << m_grid[x][y].getChar();
+      }
+      cout << m_grid[x][y].getChar() << " ";
     }
+    cout << endl;
+  }
 
 }
 
@@ -251,12 +251,5 @@ bool Board::isSunk(int row, int col)
 
 bool Board::checkWin()
 {
-  if(counter == m_numShips)
-  {
-    return(true)
-    }
-  else{
-    return(false)
-    }
-}
+  return(counter == m_numShips);
 }
