@@ -120,8 +120,8 @@ void GamePlay::fireAt()
     canBeFired == false;
    do
    {
-    CurrentBoard[i][j].hitShip();
-    if(currenBoard[i][j].getChar() != '^')
+    m_grid[i][j].hitShip();
+    if(m_grid[i][j].getChar() != '^')
     {
       canBeFired == true;
     }
