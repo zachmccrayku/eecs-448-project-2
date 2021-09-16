@@ -67,10 +67,7 @@ void UserInteraction::playGame()
 
 
       if(choose == 1)
-      {
-        cout << "fireAt()...";
-        system("clear");
-        
+      {  
         if(p1Turn == true)
         {
           player2.fireAt();
@@ -79,6 +76,7 @@ void UserInteraction::playGame()
         {
           player1.fireAt();
         }
+
         p1Turn = !p1Turn;
       }
 
@@ -134,4 +132,3 @@ void UserInteraction::run()
 {
   playGame();
 }
-
