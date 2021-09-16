@@ -51,3 +51,8 @@ char Ship::getChar()
 {
   return(gridChar);
 }
+
+void Ship::setChar(char temp)
+{
+  gridChar = temp;
+}
