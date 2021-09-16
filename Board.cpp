@@ -14,7 +14,7 @@ void Board::viewBoard()
 {
   // view player's own board
   // view oppoenent's board
-  cout << "Your Board"\n;
+  cout << "Your Board\n";
   cout << "  A B C D E F G H I J " << endl;
 
   for(int x = 0; x < 9; x++)
@@ -31,7 +31,7 @@ void Board::viewBoard()
 }
 void Board::viewOBoard()
 {
-    cout << "Opponent's Board"\n;
+    cout << "Opponent's Board\n";
     cout << "  A B C D E F G H I J " << endl;
     for(int x = 0; x < 9; x++)
     {
@@ -152,11 +152,11 @@ void Board::fireAt()
     viewOBoard();
     if(m_grid[fireSpotNum][fireSpotLetter].m_hasBeenHit == true)
     {
-      cout << "Hit"\n;
+      cout << "Hit\n";
     }
     else
     {
-      cout << "Miss"\n;
+      cout << "Miss\n";
     }
     
   }
