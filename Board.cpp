@@ -31,7 +31,6 @@ void Board::viewBoard()
 }
 void Board::viewOBoard()
 {
-    char* array[9][10];
     cout << "  A B C D E F G H I J " << endl;
     for(int x = 0; x < 9; x++)
     {
