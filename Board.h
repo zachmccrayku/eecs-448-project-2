@@ -39,6 +39,12 @@ public:
   *@param None
   */
   void viewBoard();
+  
+    /*
+  *Allows players to view other player's board as well as the opponents board with their hits and misses
+  *@param None
+  */
+  void viewOBoard();
 
   /*
   *Ship is placed on the board
