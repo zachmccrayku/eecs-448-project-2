@@ -81,11 +81,11 @@ void UserInteraction::playGame()
        {
           if(player1 == true)
           {
-            player1->viewBoard;
+            player1->viewBoard();
           }
           else
           {
-            player2->viewBoard2;
+            player2->viewBoard();
           }
        }
 
@@ -93,11 +93,11 @@ void UserInteraction::playGame()
        {
           if(player1 == true)
           {
-            player1->viewOBoard;
+            player1->viewOBoard();
           }
           else
           {
-            player2->viewOBoard2;
+            player2->viewOBoard();
           }
        }
        if(choose == 4)
