@@ -31,10 +31,12 @@ void Board::viewBoard()
 }
 
 
-void Board::shipPlacement()
+void Board::shipPlacement(int numShips)
 {
   // set ships onto grid
   // called from UserInteraction
+
+  m_numShips = numShips;
 
   bool isHorizontal = true;
   char orientation;
