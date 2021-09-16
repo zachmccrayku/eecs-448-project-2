@@ -11,6 +11,7 @@ private:
   int fireSpotLetter; 
   int fireSpotNum;
   bool canBeFired;
+  char choice; 
 
 public:
   /*
