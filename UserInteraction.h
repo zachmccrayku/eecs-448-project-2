@@ -16,8 +16,8 @@ using namespace std;
 class UserInteraction
 {
 private:
-  Board* player1Board; // Points to player 1 board
-  Board* player2Board; // Points to player 2 board
+  Board* player1; // Points to player 1 board
+  Board* player2; // Points to player 2 board
   GamePlay choice; // Gives players the gameplay options
   int numShips; // Is given by user and sets up the number of ships for placement
 
