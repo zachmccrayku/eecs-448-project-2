@@ -48,9 +48,9 @@ void UserInteraction::playGame()
       }
 
      cout << "Player 1 where you like to set your ship?\n";
-      player1.shipPlacement(numShips);
+      player1->shipPlacement(numShips);
      cout << "Player 2 where you like to set your ship\n";
-      player2.shipPlacement(numShips);
+      player2->shipPlacement(numShips);
 
           
     }
