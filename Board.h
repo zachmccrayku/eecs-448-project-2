@@ -59,6 +59,13 @@ public:
   *@returns the coordinate of the shot
   */
   int fireAt(); 
+  
+   /*
+  *Checks to see if the opponents ship sunk
+  *@param None
+  *@return boolean value for ship status
+  */
+  bool isSunk(); 
 
   };
 
