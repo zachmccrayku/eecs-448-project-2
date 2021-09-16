@@ -78,6 +78,12 @@ class Ship
 	  *@param bool isHorizontal, if player wants horizontal (true) or vertical (false)
 	  */
     void makeHorizontal(bool isHorizontal);
+	
+       /*
+	  *returns the char of the ship
+	  *@param none
+	  */
+    char getChar();
 };
 
 #endif
