@@ -40,9 +40,18 @@ bool GamePlay::isSunk()
 }
 
 bool GamePlay::quitGame()
-{
-  // once called, end program and delete dynamic memory
+{ 
+  
+  cout << "Would you like to quit the game? Y/N";
+  cin >> choice;
+  if (choice == 'y' || choice == 'Y')
+  {
   return(true);
+  }
+  else 
+  {
+    return(false);
+  }
 }
 
 int GamePlay::convertString(string temp)
