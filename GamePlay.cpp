@@ -16,7 +16,7 @@ int GamePlay::fireAt()
     convertString(fireAtSpot);
    if(fireSpot1 >= 65 || fireSpot1 <= 74)
      {
-       fireSpot1= fireSpotLetter - 66;
+       fireSpotLetter= fireSpotLetter - 66;
        canBeFired = true;
      }
     else if(fireSpotNum >= 1 || fireSpotNum <= 10)
