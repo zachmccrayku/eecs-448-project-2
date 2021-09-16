@@ -40,15 +40,15 @@ void Board::viewOBoard()
         for(int y = 0; y < 10; y++)
         {
 
-            if(m_grid[9][10] == '^')
+            if(m_grid[x][y].getChar() == '^')
             {
                 cout << "_";
             }
             else
             {
-                cout << getChar();
+                cout << m_grid[x][y].getChar();
             }
-            cout << Board.array[x][y].gridChar << " ";
+            cout << m_grid[x][y].getChar() << " ";
         }
         cout << endl;
     }
@@ -210,6 +210,7 @@ bool Board::isSunk(int row, int col)
         else if(m_grid[row][i-1].getChar() == 'X')
         {
           return(true);
+          counter++;
         }
       }
       break;
@@ -235,6 +236,7 @@ bool Board::isSunk(int row, int col)
         }
         else if(m_grid[i-1][col].getChar() == 'X')
         {
+          counter++;
           return(true);
         }
       }
