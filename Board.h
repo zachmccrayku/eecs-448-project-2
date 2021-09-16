@@ -23,7 +23,6 @@ private:
   int fireSpotLetter;
   int fireSpotNum;
   bool canBeFired;
-  char choice;
   int counter;
 
 public:
