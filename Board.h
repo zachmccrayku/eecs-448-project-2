@@ -1,9 +1,9 @@
-  /**
-   File Name: Board.h
-   Authors: Regan Janssen, Andrew Loaiza, Chen Lu, Jui Nagarkar, Natasha Shirley
-   Description: Board class creates grid and places the location of the ship. Allows players to view the board
-   Date: Sept. 19, 2021
-   */
+/**
+File Name: Board.h
+Authors: Regan Janssen, Andrew Loaiza, Chen Lu, Jui Nagarkar, Natasha Shirley
+Description: Board class creates grid and places the location of the ship. Allows players to view the board
+Date: Sept. 19, 2021
+*/
 
 #ifndef BOARD_H
 #define BOARD_H
@@ -35,38 +35,38 @@ public:
   ~Board(); // avoid memory leaks!
 
   /*
-     *Allows players to view their board as well as the opponents board with their hits and misses
-     *@param None
-     */
-    void viewBoard();
+  *Allows players to view their board as well as the opponents board with their hits and misses
+  *@param None
+  */
+  void viewBoard();
 
-    /*
-     *Ship is placed on the board
-     *@param number of ships
-     */
-    void shipPlacement(int numShips);
+  /*
+  *Ship is placed on the board
+  *@param number of ships
+  */
+  void shipPlacement(int numShips);
 
-      /*
-    *Converts string input to int, checks for out of bounds
-    *@param string
-    *@return int value
-     */
+  /*
+  *Converts string input to int, checks for out of bounds
+  *@param string
+  *@return int value
+  */
   void convertString();
-
-    /*
+  
+  /*
   *User chooses coordinates to shoot at
   *@param None
   *@returns the coordinate of the shot
   */
   void fireAt();
 
-   /*
+  /*
   *Checks to see if the opponents ship sunk
   *@param None
   *@return boolean value for ship status
   */
   bool isSunk(int row, int col);
 
-  };
+};
 
 #endif
