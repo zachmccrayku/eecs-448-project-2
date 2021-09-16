@@ -220,6 +220,7 @@ bool Board::isSunk(int row, int col)
       break;
     }
   }
+
   else
   {
     for(int i = row; i < numRows; i++)
@@ -247,6 +248,7 @@ bool Board::isSunk(int row, int col)
       break;
     }
   }
+  return(false);
 }
 
 bool Board::checkWin()
