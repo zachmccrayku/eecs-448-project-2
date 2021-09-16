@@ -50,7 +50,7 @@ void Board::shipPlacement(int numShips)
     system("clear");
     viewBoard(); // show player their current board with ship placements
 
-    // let user choose horizontal or vertical ship placement
+    // choose horizontal or vertical ship placement
     if (i != 1)
     {
       do
@@ -69,13 +69,13 @@ void Board::shipPlacement(int numShips)
       }
     }
 
-    // let user choose coordinate
+    // choose coordinates for ship
+    // call method for obtaining coordinates [A][1]
+    // method should return two ints, corressponding to indices for 2D-array
+
     cout << "Choose the starting ";
     (isHorizontal ? cout << "leftmost" : cout << "topmost");
     cout << " coordinate where you would like to place your ship.\n";
-
-    // call method for obtaining coordinates [A][1]
-    // method should return two ints, corressponding to indices for 2D-array
 
     do {
       cout << "Input (array) row number (testing): ";
@@ -90,19 +90,19 @@ void Board::shipPlacement(int numShips)
     // check if coordinate is valid
     if (isHorizontal)
     {
-      for (int j = col; j < i; j++)
+      for (int j = 0; j < i; j++)
       {
-        m_grid[row][j].placeShip();
-        m_grid[row][j].makeHorizontal(isHorizontal);
+        m_grid[row][col+j].placeShip();
+        m_grid[row][col+j].makeHorizontal(isHorizontal);
       }
     }
 
     else
     {
-      for (int j = row; j < i; j++)
+      for (int j = 0; j < i; j++)
       {
-        m_grid[j][col].placeShip();
-        m_grid[j][col].makeHorizontal(isHorizontal);
+        m_grid[row+j][col].placeShip();
+        m_grid[row+j][col].makeHorizontal(isHorizontal);
       }
     }
 
