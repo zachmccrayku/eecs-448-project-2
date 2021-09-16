@@ -73,6 +73,14 @@ public:
   */
   bool isSunk(int row, int col);
 
+  
+  /*
+  *Checks to see if all ships have been sunk
+  *@param None
+  *@return boolean value for win status
+  */
+  bool checkWin();
+
 };
 
 #endif
