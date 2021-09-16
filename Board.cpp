@@ -159,3 +159,59 @@ void Board::convertString()
     }
     while(canBeFired == false);
 }
+  
+bool Board::isSunk( int row, int col)
+{
+      if(m_grid[row][col].isHorizontal == true)
+      {
+        for(int i = col; i < numCols; i++)
+        {
+          if(m_grid[row][i].getChar() == '^')
+          {
+            return (false)
+           }
+          if(m_grid[row][i].getChar() == '_')
+          {
+            if(m_grid[row][i-1].getChar() == '^')
+            {
+              return(false); 
+            }
+            else if(i-1 != 0)
+            {
+             isSunk(m_grid, row, i-1);
+            }
+            else if(m_grid[row][i-1].getChar() == 'X')
+            {
+              return(true);
+            }
+          }
+          break;
+        }
+      }
+      else
+      {
+        for(int i = row; i < numRows; i++)
+        {
+          if(m_grid[i][col].getChar() == '^')
+          {
+            return (false)
+           }
+          if(m_grid[i][col].getChar() == '_')
+          {
+            if(m_grid[i-1][col].getChar() == '^')
+            {
+              return(false); 
+            }
+            else if(i-1 != 0)
+            {
+             isSunk(m_grid, i-1, col);
+            }
+            else if(m_grid[i-1][col].getChar() == 'X')
+            {
+              return(true);
+            }
+          }
+          break;
+        }
+      }       
+}
