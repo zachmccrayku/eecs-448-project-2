@@ -22,17 +22,17 @@ void UserInteraction::playGame()
   while(1)
   {
     int choice;
+    cout << "Hi! Welcome to Battleship!\n";
     cout << "1. Start" << endl; // start the game and setting
     //cout << "2. Setting" << endl;
     cout << "2. Quit" << endl;
     cin >> choice;
     if(choice == 1)
     {
-      cout << "Game is starting...\n";
-      cout << "***************************";
-      cout << "Player 1";
       cout << "***************************\n";
-      player1Board->viewBoard();
+      cout << "Game is starting...\n";
+      cout << "***************************\n";
+      
 
       cout << "input your number of ships (enter a value between 1-6): ";
       cin >> numShips;
@@ -46,16 +46,13 @@ void UserInteraction::playGame()
       }
       while(numShips > 6 || numShips <=0);
       }
-      int count;
-      cin >> count;
-      for(int k=1; k<=count; k++)
-      {
-          //set each ship
-          //if()
-          cout << "Player 1 where you like to set your ship " << k << " input your col and row";
-          //check ver
-      }
-      //after set player 1 and then go to player 2
+
+     cout << "Player 1 where you like to set your ship?\n";
+      player1.shipPlacement(numShips);
+     cout << "Player 2 where you like to set your ship\n";
+      player2.shipPlacement(numShips);
+
+          
     }
     if(choice == 2)
     {
