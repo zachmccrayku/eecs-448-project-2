@@ -70,11 +70,11 @@ void UserInteraction::playGame()
       {  
         if(p1Turn == true)
         {
-          player2.fireAt();
+          player2->fireAt();
         }
         else
         {
-          player1.fireAt();
+          player1->fireAt();
         }
 
         p1Turn = !p1Turn;
