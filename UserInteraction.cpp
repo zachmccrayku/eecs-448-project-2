@@ -36,8 +36,6 @@ void UserInteraction::playGame()
 
       cout << "input your number of ships (enter a value between 1-6): ";
       cin >> numShips;
-      if(numShips > 6 || numShips <= 0)
-      {
       do
       {
         cout << "Sorry, the value entered was not between the allowed value. Please try again.";
@@ -45,14 +43,63 @@ void UserInteraction::playGame()
         cin >> numShips;
       }
       while(numShips > 6 || numShips <=0);
-      }
+      
 
      cout << "Player 1 where you like to set your ship?\n";
       player1->shipPlacement(numShips);
      cout << "Player 2 where you like to set your ship\n";
       player2->shipPlacement(numShips);
 
+       
+       int choose;
+        
+       cout << "1. Attack opponent\n"; 
+       cout << "2. View my board\n"; 
+       cout << "3. View opponent board\n"; 
+       cout << "4. Quit\n"; 
+       cout << "What would you like to do: \n";
+        cin >> choose;
+        do
+        {
+          cout << "Sorry, the value entered was not between the allowed value. Please try again.\n";
           
+          cout << "1. Attack opponent\n"; 
+          cout << "2. View my board\n"; 
+          cout << "3. View opponent board\n"; 
+          cout << "4. Quit\n"; 
+          cout << "What would you like to do: \n"; 
+          cin >> choose;
+        } while(choose <= 0 || choose > 4);
+        
+
+       if(choose == 1)
+       {
+         fireAt();
+       }
+
+       if(choose == 2)
+       {
+          if(player1 == true)
+          {
+            player1->viewBoard;
+          }
+          else
+          {
+            player2->viewBoard2;
+          }
+       }
+
+       if(choose == 3)
+       {
+
+       }
+       if(choose == 4)
+       {
+         cout << "Quitting...";
+         break;
+       }
+
+
     }
     if(choice == 2)
     {
