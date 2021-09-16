@@ -120,8 +120,8 @@ void Board::fireAt()
   canBeFired = false;
   do
   {
-    m_grid[i][j].hitShip();
-    if(m_grid[i][j].getChar() != '^')
+    m_grid[fireSpotNum][fireSpotLetter].hitShip();
+    if(m_grid[fireSpotNum][fireSpotLetter].getChar() != '^')
     {
       canBeFired = true;
     }
