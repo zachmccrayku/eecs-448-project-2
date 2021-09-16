@@ -117,101 +117,101 @@ void Board::shipPlacement(int numShips)
 
 void GamePlay::fireAt()
 {
-    canBeFired == false;
-   do
-   {
+  canBeFired == false;
+  do
+  {
     m_grid[i][j].hitShip();
     if(m_grid[i][j].getChar() != '^')
     {
       canBeFired == true;
     }
-   }
+  }
   while(canBeFired == false);
- }
+}
 
 void Board::convertString()
 {
-  canBeFired == false;
-    do
-   {
-     cout << "Choose a Coordinate: ";
-     cin >> fireAtSpot;
-     if(fireAtSpot.length() == 2)
-     { 
-       fireSpotLetter = int(fireAtSpot.at(0));
-       fireSpotNum = int(fireAtSpot.at(1));
+  canBeFired = false;
+  do
+  {
+    cout << "Choose a Coordinate: ";
+    cin >> fireAtSpot;
+    if(fireAtSpot.length() == 2)
+    {
+      fireSpotLetter = int(fireAtSpot.at(0));
+      fireSpotNum = int(fireAtSpot.at(1));
       if(fireSpotNum >= 49 || fireSpotNum <=57)
       {
         fireSpotNum = fireSpotNum-49;
-         if(fireSpotLetter >= 65 || fireSpotLetter <= 74)
-         {
-           fireSpotLetter= fireSpotLetter - 65;
-          }
-         else if(fireSpotLetter >= 97 || fireSpotLetter <= 106)
-         {
-            fireSpotLetter= fireSpotLetter - 97;
-         }
-      }
-     else
-     {
-      cout << "Error! Try Again!";
-      }
-    }
-    while(canBeFired == false);
-}
-  
-bool Board::isSunk( int row, int col)
-{
-      if(m_grid[row][col].isHorizontal == true)
-      {
-        for(int i = col; i < numCols; i++)
+        if(fireSpotLetter >= 65 || fireSpotLetter <= 74)
         {
-          if(m_grid[row][i].getChar() == '^')
-          {
-            return (false)
-           }
-          if(m_grid[row][i].getChar() == '_')
-          {
-            if(m_grid[row][i-1].getChar() == '^')
-            {
-              return(false); 
-            }
-            else if(i-1 != 0)
-            {
-             isSunk(m_grid, row, i-1);
-            }
-            else if(m_grid[row][i-1].getChar() == 'X')
-            {
-              return(true);
-            }
-          }
-          break;
+          fireSpotLetter= fireSpotLetter - 65;
+        }
+        else if(fireSpotLetter >= 97 || fireSpotLetter <= 106)
+        {
+          fireSpotLetter= fireSpotLetter - 97;
         }
       }
       else
       {
-        for(int i = row; i < numRows; i++)
+        cout << "Error! Try Again!";
+      }
+    }
+
+  } while(canBeFired == false);
+
+  bool Board::isSunk( int row, int col)
+  {
+    if(m_grid[row][col].isHorizontal == true)
+    {
+      for(int i = col; i < numCols; i++)
+      {
+        if(m_grid[row][i].getChar() == '^')
         {
-          if(m_grid[i][col].getChar() == '^')
-          {
-            return (false)
-           }
-          if(m_grid[i][col].getChar() == '_')
-          {
-            if(m_grid[i-1][col].getChar() == '^')
-            {
-              return(false); 
-            }
-            else if(i-1 != 0)
-            {
-             isSunk(m_grid, i-1, col);
-            }
-            else if(m_grid[i-1][col].getChar() == 'X')
-            {
-              return(true);
-            }
-          }
-          break;
+          return (false)
         }
-      }       
-}
+        if(m_grid[row][i].getChar() == '_')
+        {
+          if(m_grid[row][i-1].getChar() == '^')
+          {
+            return(false);
+          }
+          else if(i-1 != 0)
+          {
+            isSunk(m_grid, row, i-1);
+          }
+          else if(m_grid[row][i-1].getChar() == 'X')
+          {
+            return(true);
+          }
+        }
+        break;
+      }
+    }
+    else
+    {
+      for(int i = row; i < numRows; i++)
+      {
+        if(m_grid[i][col].getChar() == '^')
+        {
+          return (false)
+        }
+        if(m_grid[i][col].getChar() == '_')
+        {
+          if(m_grid[i-1][col].getChar() == '^')
+          {
+            return(false);
+          }
+          else if(i-1 != 0)
+          {
+            isSunk(m_grid, i-1, col);
+          }
+          else if(m_grid[i-1][col].getChar() == 'X')
+          {
+            return(true);
+          }
+        }
+        break;
+      }
+    }
+  }
