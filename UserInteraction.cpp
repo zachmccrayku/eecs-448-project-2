@@ -42,9 +42,12 @@ void UserInteraction::playGame()
       cin >> numShips;
     }
 
-    cout << "Player 1 where you like to set your ship?\n";
+    system("clear");
+    cout << "Player 1 set your ships\n";
     player1->shipPlacement(numShips);
-    cout << "Player 2 where you like to set your ship\n";
+
+    system("clear");
+    cout << "Player 2 set your ships\n";
     player2->shipPlacement(numShips);
 
     while(1)
@@ -56,7 +59,7 @@ void UserInteraction::playGame()
         cout << "2. View my board\n";
         cout << "3. View opponent board\n";
         cout << "4. Quit\n";
-        cout << "What would you like to do: \n";
+        cout << "What would you like to do: ";
         cin >> choose;
 
         if (choose <= 0 || choose > 4)
@@ -69,7 +72,7 @@ void UserInteraction::playGame()
       if(choose == 1)
       {
         // fireAt();
-        cout << "fireAt()...";
+        cout << "fireAt()...\n";
         system("clear");
         p1Turn = !p1Turn;
       }
