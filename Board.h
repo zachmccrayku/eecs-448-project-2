@@ -9,6 +9,7 @@
 #define BOARD_H
 
 #include "Ship.h"
+
 using namespace std;
 
 class Board
@@ -18,6 +19,11 @@ private:
   int numCols = 10; // Sets the number of columns for the board
   Ship m_grid[9][10]; // 2D array, of type Ship
   int m_numShips;
+  string fireAtSpot; 
+  int fireSpotLetter; 
+  int fireSpotNum;
+  bool canBeFired;
+  char choice; 
 
 public:
   /*
@@ -39,6 +45,21 @@ public:
      *@param number of ships
      */
     void shipPlacement(int numShips);
+  
+      /*
+    *Converts string input to int, checks for out of bounds
+    *@param string
+    *@return int value
+     */
+  void convertString();
+  
+    /*
+  *User chooses coordinates to shoot at
+  *@param None
+  *@returns the coordinate of the shot
+  */
+  int fireAt(); 
+
   };
 
 #endif
