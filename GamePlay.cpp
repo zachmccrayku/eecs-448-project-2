@@ -7,30 +7,42 @@ GamePlay::GamePlay()
 
 GamePlay::~GamePlay(){}
 
-int GamePlay::fireAt()
+void GamePlay::fireAt(Board* CurrentBoard)
 {
   // do
   // {
   //   cout << "Where would you like to fire?";
   //   cin >> fireAtSpot;
   //   convertString(fireAtSpot);
-  //  if(fireSpot1 >= 65 || fireSpot1 <= 74)
-  //    {
-  //      fireSpotLetter= fireSpotLetter - 66;
-  //      canBeFired = true;
-  //    }
-  //   else if(fireSpotNum >= 1 || fireSpotNum <= 10)
+  //  if(fireSpotNum >= 49 || fireSpotNum <= 57)
   //   {
-  //     fireSpotNum = fireSpotNum - 1;
-  //     canBeFired = true;
+  //     fireSpotNum = fireSpotNum - 49;
+  //       if(fireSpotLetter >= 65 || fireSpotLetter <= 74)
+  //       {
+  //         fireSpotLetter= fireSpotLetter - 65;
+  //         
+  //         }
+  //       else if(fireSpotLetter >= 97 || fireSpotLetter <= 106)
+  //       {
+  //          fireSpotLetter= fireSpotLetter - 97;
+  //       }
   //   }
+   //       if(currentBoard[fireSpotNum][fireSpotLetter].getChar() == "_")
+  //       {
+  //          canBeFired==True;
+  //       }
+  //     
+  //   
   //   else
   //   {
-  //     cout << "Error! Location Does Not Exist! Try Again!";
+  //     cout << "Error! Try Again!";
   //    }
+  //    
+ //
   //  }
   //    while(canBeFired == false);
-  //   return(fireSpotLetter, fireSpotNum);
+  //  CurrentBoard[i][j].hitShip();
+  //
 
 }
 
