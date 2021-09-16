@@ -152,11 +152,11 @@ void Board::fireAt()
     viewOBoard();
     if(m_grid[fireSpotNum][fireSpotLetter].m_hasBeenHit == true)
     {
-      cout << "Hit";
+      cout << "Hit"\n;
     }
     else
     {
-      cout << "Miss";
+      cout << "Miss"\n;
     }
     
   }
