@@ -49,8 +49,6 @@ void UserInteraction::playGame()
 
     while(1)
     {
-      system("clear");
-      
       int choose;
       do
       {
@@ -87,11 +85,11 @@ void UserInteraction::playGame()
       {
         if(p1Turn)
         {
-          player1->viewBoard();
+          player2->viewBoard();
         }
         else
         {
-          player2->viewBoard();
+          player1->viewBoard();
         }
       }
 
