@@ -7,11 +7,11 @@ using namespace std;
 class GamePlay
 {
 private:
-  string fireAtSpot; 
-  int fireSpotLetter; 
+  string fireAtSpot;
+  int fireSpotLetter;
   int fireSpotNum;
   bool canBeFired;
-  char choice; 
+  char choice;
 
 public:
   /*
@@ -28,24 +28,25 @@ public:
   *@param None
   *@returns the coordinate of the shot
   */
-  int fireAt(); 
+  // int fireAt(Board* CurrentBoard);
+  int fireAt();
 
   /*
   *Checks to see if the opponents ship sunk
   *@param None
   *@return boolean value for ship status
   */
-  bool isSunk(); 
+  bool isSunk();
 
   /*
   *Command to end the game
   *@param None
-  *@return boolean value 
+  *@return boolean value
   */
-  bool quitGame(); 
-  
+  bool quitGame();
+
     /*
-  *Converts string input to int 
+  *Converts string input to int
   *@param string
   *@return int value
   */

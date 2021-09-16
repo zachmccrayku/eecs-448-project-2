@@ -7,7 +7,8 @@ GamePlay::GamePlay()
 
 GamePlay::~GamePlay(){}
 
-void GamePlay::fireAt(Board* CurrentBoard)
+// void GamePlay::fireAt(Board* CurrentBoard)
+int GamePlay::fireAt()
 {
   // do
   // {
@@ -20,7 +21,7 @@ void GamePlay::fireAt(Board* CurrentBoard)
   //       if(fireSpotLetter >= 65 || fireSpotLetter <= 74)
   //       {
   //         fireSpotLetter= fireSpotLetter - 65;
-  //         
+  //
   //         }
   //       else if(fireSpotLetter >= 97 || fireSpotLetter <= 106)
   //       {
@@ -31,13 +32,13 @@ void GamePlay::fireAt(Board* CurrentBoard)
   //       {
   //          canBeFired==True;
   //       }
-  //     
-  //   
+  //
+  //
   //   else
   //   {
   //     cout << "Error! Try Again!";
   //    }
-  //    
+  //
  //
   //  }
   //    while(canBeFired == false);

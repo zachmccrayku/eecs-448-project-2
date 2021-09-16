@@ -26,6 +26,7 @@ void UserInteraction::playGame()
     cout << "Hi! Welcome to Battleship!\n";
     cout << "1. Start" << endl; // start the game
     cout << "2. Quit" << endl; //quit the game
+    cout << "Option: ";
     cin >> choice;
     if(choice == 1)
     {
@@ -36,20 +37,20 @@ void UserInteraction::playGame()
 
       cout << "input your number of ships (enter a value between 1-6): ";
       cin >> numShips;
-      do
+
+      while(numShips > 6 || numShips <=0)
       {
         cout << "Sorry, the value entered was not between the allowed value. Please try again.";
         cout << "input your number of ships (enter a value between 1-6): ";
         cin >> numShips;
       }
-      while(numShips > 6 || numShips <=0);
 
       cout << "Player 1 where you like to set your ship?\n";
       player1->shipPlacement(numShips);
       cout << "Player 2 where you like to set your ship\n";
       player2->shipPlacement(numShips);
 
-      while(1)
+      while(myTurn)
       {
         int choose;
         do
