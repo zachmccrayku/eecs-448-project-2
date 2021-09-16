@@ -18,7 +18,6 @@ private:
   int numRows = 9; // Sets the number of rows for the board
   int numCols = 10; // Sets the number of columns for the board
   Ship m_grid[9][10]; // 2D array, of type Ship
-  char* m_array[9][10];
   int m_numShips;
   string fireAtSpot;
   int fireSpotLetter;
