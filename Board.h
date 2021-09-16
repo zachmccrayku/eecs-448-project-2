@@ -51,7 +51,7 @@ public:
     *@param string
     *@return int value
      */
-  int convertString(string temp);
+  void convertString();
   
     /*
   *User chooses coordinates to shoot at
