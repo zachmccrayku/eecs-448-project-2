@@ -70,7 +70,7 @@ void UserInteraction::playGame()
       {
         cout << "fireAt()...";
         system("clear");
-        p1Turn = !p1Turn;
+        
         if(p1Turn == true)
         {
           player2.fireAt();
@@ -79,6 +79,7 @@ void UserInteraction::playGame()
         {
           player1.fireAt();
         }
+        p1Turn = !p1Turn;
       }
 
       if(choose == 2)
@@ -97,12 +98,12 @@ void UserInteraction::playGame()
       {
         if(p1Turn)
         {
-          player1.viewOBoard();
+          player1->viewOBoard();
         }
 
         else
         {
-          player2.viewOBoard();
+          player2->viewOBoard();
         }
       }
 
@@ -111,7 +112,7 @@ void UserInteraction::playGame()
         cout << "Quitting...";
         break;
       }
-     p1Turn = !p1Turn;
+
     }
 
   }
