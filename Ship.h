@@ -84,6 +84,9 @@ class Ship
 	  *@param none
 	  */
     char getChar();
+	
+	
+    void setChar(char temp);
 };
 
 #endif
