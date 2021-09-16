@@ -23,9 +23,8 @@ void UserInteraction::playGame()
   {
     int choice;
     cout << "Hi! Welcome to Battleship!\n";
-    cout << "1. Start" << endl; // start the game and setting
-    //cout << "2. Setting" << endl;
-    cout << "2. Quit" << endl;
+    cout << "1. Start" << endl; // start the game
+    cout << "2. Quit" << endl; //quit the game
     cin >> choice;
     if(choice == 1)
     {
@@ -50,7 +49,8 @@ void UserInteraction::playGame()
      cout << "Player 2 where you like to set your ship\n";
       player2->shipPlacement(numShips);
 
-       
+    while(numShips != isSunk)   
+      {
        int choose;
         
        cout << "1. Attack opponent\n"; 
@@ -91,14 +91,21 @@ void UserInteraction::playGame()
 
        if(choose == 3)
        {
-
+          if(player1 == true)
+          {
+            player1->viewOBoard;
+          }
+          else
+          {
+            player2->viewOBoard2;
+          }
        }
        if(choose == 4)
        {
          cout << "Quitting...";
          break;
        }
-
+      }
 
     }
     if(choice == 2)
