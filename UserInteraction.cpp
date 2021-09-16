@@ -75,6 +75,14 @@ void UserInteraction::playGame()
         cout << "fireAt()...\n";
         system("clear");
         p1Turn = !p1Turn;
+        if(p1Turn == true)
+        {
+          player2.fireAt();
+        }
+        else
+        {
+          player1.fireAt();
+        }
       }
 
       if(choose == 2)
@@ -130,19 +138,4 @@ void UserInteraction::playGame()
 void UserInteraction::run()
 {
   playGame();
-}
-
-bool UserInteraction::quitGame()
-{
-  char choice;
-  cout << "Would you like to quit the game? Y/N";
-  cin >> choice;
-  if (choice == 'y' || choice == 'Y')
-  {
-    return(true);
-  }
-  else
-  {
-    return(false);
-  }
 }
