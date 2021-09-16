@@ -1,12 +1,37 @@
 #include "GamePlay.h"
 
-GamePlay::GamePlay(){}
+GamePlay::GamePlay()
+{
+  canBeFired = false;
+}
 
 GamePlay::~GamePlay(){}
 
-string GamePlay::fireAt()
+int GamePlay::fireAt()
 {
-  // user chooses coordinates to shoot at
+  do
+  {
+    cout << "Where would you like to fire?";
+    cin >> fireAtSpot;
+    convertString(fireAtSpot);
+   if(fireSpot1 >= 65 || fireSpot1 <= 74)
+     {
+       fireSpot1= fireSpotLetter - 66;
+       canBeFired = true;
+     }
+    else if(fireSpotNum >= 1 || fireSpotNum <= 10)
+    {
+      fireSpotNum = fireSpotNum - 1;
+      canBeFired = true;
+    }
+    else
+    {
+      cout << "Error! Location Does Not Exist! Try Again!";
+     }
+   }
+     while(canBeFired == false);
+    return(fireSpotLetter, fireSpotNum);
+  
 }
 
 bool GamePlay::isSunk()
@@ -18,4 +43,11 @@ bool GamePlay::quitGame()
 {
   // once called, end program and delete dynamic memory
   return(true);
+}
+
+int GamePlay::convertString(string temp)
+{
+  fireSpotLetter = int(temp.at(0));
+ 
+  fireSpotNum = int(temp.at(1)); 
 }
