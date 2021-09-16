@@ -2,16 +2,16 @@
 
 UserInteraction::UserInteraction()
 {
-  player1Board = new Board();
-  player2Board = new Board();
+  player1 = new Board();
+  player2 = new Board();
   numShips = 0;
 }
 
 
 UserInteraction::~UserInteraction()
 {
-  delete player1Board;
-  delete player2Board;
+  delete player1;
+  delete player2;
 }
 
 
