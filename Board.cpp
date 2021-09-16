@@ -35,6 +35,7 @@ void Board::shipPlacement(int numShips)
 {
   // set ships onto grid
   // called from UserInteraction
+  system("clear");
 
   m_numShips = numShips;
 
@@ -46,6 +47,7 @@ void Board::shipPlacement(int numShips)
 
   for (int i = 1; i <= m_numShips; i++)
   {
+    system("clear");
     viewBoard(); // show player their current board with ship placements
 
     // let user choose horizontal or vertical ship placement
@@ -107,4 +109,8 @@ void Board::shipPlacement(int numShips)
     // loop to next iteration
 
   }
+
+  system("clear");
+  cout << "Here is your final ship placement! Good luck!\n";
+  viewBoard();
 }
