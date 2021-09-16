@@ -1,10 +1,3 @@
-  /**
-   File Name: GamePlay.h
-   Authors: Regan Janssen, Andrew Loaiza, Chen Lu, Jui Nagarkar, Natasha Shirley
-   Description: Gameplay class allows users to attack, verify if ship is sunk, and end the game
-   Date: Sept. 19, 2021
-   */ 
-
 #ifndef GAMEPLAY_H
 #define GAMEPLAY_H
 
@@ -14,6 +7,10 @@ using namespace std;
 class GamePlay
 {
 private:
+  string fireAtSpot; 
+  int fireSpotLetter; 
+  int fireSpotNum;
+  bool canBeFired;
 
 public:
   /*
@@ -30,7 +27,7 @@ public:
   *@param None
   *@returns the coordinate of the shot
   */
-  string fireAt(); 
+  int fireAt(); 
 
   /*
   *Checks to see if the opponents ship sunk
@@ -45,6 +42,13 @@ public:
   *@return boolean value 
   */
   bool quitGame(); 
+  
+    /*
+  *Converts string input to int 
+  *@param string
+  *@return int value
+  */
+  int convertString(string temp);
 };
 
 #endif
