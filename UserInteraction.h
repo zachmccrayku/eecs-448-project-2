@@ -41,12 +41,6 @@ public:
    */
   void run();
 
-   /*
-  *Command to end the game
-  *@param None
-  *@return boolean value
-  */
-  bool quitGame();
 };
 
 #endif
