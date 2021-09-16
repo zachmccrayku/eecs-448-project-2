@@ -92,25 +92,12 @@ void Board::shipPlacement(int numShips)
       }
     }
 
-    // choose coordinates for ship
-    // call method for obtaining coordinates [A][1]
-    // method should return two ints, corressponding to indices for 2D-array
-
+    // cout statement
     cout << "Choose the starting ";
     (isHorizontal ? cout << "leftmost" : cout << "topmost");
     cout << " coordinate where you would like to place your ";
     isHorizontal ? cout << "1 x " << i : cout << i << " x 1";
     cout << " ship.\n";
-
-    // do {
-    //   cout << "Input (array) row number (testing): ";
-    //   cin >> row;
-    // } while(row < 0 || row >= numRows);
-    //
-    // do {
-    //   cout << "Input (array) column number (testing): ";
-    //   cin >> col;
-    // } while(col < 0 || col >= numCols);
 
     convertString();
 
