@@ -248,3 +248,15 @@ bool Board::isSunk(int row, int col)
     }
   }
 }
+
+bool Board::checkWin()
+{
+  if(counter == m_numShips)
+  {
+    return(true)
+    }
+  else{
+    return(false)
+    }
+}
+}
