@@ -114,3 +114,48 @@ void Board::shipPlacement(int numShips)
   cout << "Here is your final ship placement! Good luck!\n";
   viewBoard();
 }
+
+void GamePlay::fireAt()
+{
+    canBeFired == false;
+   do
+   {
+    CurrentBoard[i][j].hitShip();
+    if(currenBoard[i][j].getChar() != '^')
+    {
+      canBeFired == true;
+    }
+   }
+  while(canBeFired == false);
+ }
+
+void Board::convertString()
+{
+  canBeFired == false;
+    do
+   {
+     cout << "Choose a Coordinate: ";
+     cin >> fireAtSpot;
+     if(fireAtSpot.length() == 2)
+     { 
+       fireSpotLetter = int(fireAtSpot.at(0));
+       fireSpotNum = int(fireAtSpot.at(1));
+      if(fireSpotNum >= 49 || fireSpotNum <=57)
+      {
+        fireSpotNum = fireSpotNum-49;
+         if(fireSpotLetter >= 65 || fireSpotLetter <= 74)
+         {
+           fireSpotLetter= fireSpotLetter - 65;
+          }
+         else if(fireSpotLetter >= 97 || fireSpotLetter <= 106)
+         {
+            fireSpotLetter= fireSpotLetter - 97;
+         }
+      }
+     else
+     {
+      cout << "Error! Try Again!";
+      }
+    }
+    while(canBeFired == false);
+}
