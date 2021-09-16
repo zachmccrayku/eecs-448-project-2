@@ -136,17 +136,3 @@ void UserInteraction::run()
   playGame();
 }
 
-bool UserInteraction::quitGame()
-{
-  char choice;
-  cout << "Would you like to quit the game? Y/N";
-  cin >> choice;
-  if (choice == 'y' || choice == 'Y')
-  {
-    return(true);
-  }
-  else
-  {
-    return(false);
-  }
-}
