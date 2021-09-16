@@ -70,13 +70,8 @@ void Board::shipPlacement()
     (isHorizontal ? cout << "leftmost" : cout << "topmost");
     cout << " coordinate where you would like to place your ship.\n";
 
-    // cout << "Input number and letter [A-J][1-10]: ";
-    // cin >> coordinate;
-    //
-    // for (int i = 0; i < coordinate.length(); i++)
-    // {
-    //
-    // }
+    // call method for obtaining coordinates [A][1]
+    // method should return two ints, corressponding to indices for 2D-array
 
     do {
       cout << "Input (array) row number (testing): ";
@@ -106,7 +101,7 @@ void Board::shipPlacement()
         m_grid[j][col].makeHorizontal(isHorizontal);
       }
     }
-    
+
     // loop to next iteration
 
   }
