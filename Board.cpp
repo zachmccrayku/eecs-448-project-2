@@ -36,7 +36,7 @@ void Board::viewOBoard()
     for(int x = 0; x < 9; x++)
     {
         cout << x + 1 << " ";
-    
+
         for(int y = 0; y < 10; y++)
         {
 
@@ -102,15 +102,20 @@ void Board::shipPlacement(int numShips)
     isHorizontal ? cout << "1 x " << i : cout << i << " x 1";
     cout << " ship.\n";
 
-    do {
-      cout << "Input (array) row number (testing): ";
-      cin >> row;
-    } while(row < 0 || row >= numRows);
+    // do {
+    //   cout << "Input (array) row number (testing): ";
+    //   cin >> row;
+    // } while(row < 0 || row >= numRows);
+    //
+    // do {
+    //   cout << "Input (array) column number (testing): ";
+    //   cin >> col;
+    // } while(col < 0 || col >= numCols);
 
-    do {
-      cout << "Input (array) column number (testing): ";
-      cin >> col;
-    } while(col < 0 || col >= numCols);
+    convertString();
+
+    row = fireSpotNum;
+    col = fireSpotLetter;
 
     // check if coordinate is valid
     if (isHorizontal)
@@ -158,7 +163,7 @@ void Board::fireAt()
     {
       cout << "Miss\n";
     }
-    
+
   }
   cout << "Press Any Key to Continue";
   cin >> fireAtSpot;

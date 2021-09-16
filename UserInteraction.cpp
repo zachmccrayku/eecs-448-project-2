@@ -49,14 +49,17 @@ void UserInteraction::playGame()
 
     while(1)
     {
+      system("clear");
+      
       int choose;
       do
       {
+        p1Turn ? cout << "Player 1's turn\n" : cout << "Player 2's turn\n";
         cout << "1. Attack opponent\n";
         cout << "2. View my board\n";
         cout << "3. View opponent board\n";
         cout << "4. Quit\n";
-        cout << "What would you like to do: \n";
+        cout << "What would you like to do: ";
         cin >> choose;
 
         if (choose <= 0 || choose > 4)
@@ -67,7 +70,7 @@ void UserInteraction::playGame()
 
 
       if(choose == 1)
-      {  
+      {
         if(p1Turn == true)
         {
           player2->fireAt();
