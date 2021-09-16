@@ -46,3 +46,8 @@ void Ship::makeHorizontal(bool isHorizontal)
     m_isHorizontal = false;
   }
 }
+
+char Ship::getChar()
+{
+  return(gridChar);
+}
