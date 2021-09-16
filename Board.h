@@ -52,6 +52,14 @@ public:
     *@return int value
      */
   int convertString(string temp);
+  
+    /*
+  *User chooses coordinates to shoot at
+  *@param None
+  *@returns the coordinate of the shot
+  */
+  int fireAt(); 
+
   };
 
 #endif
