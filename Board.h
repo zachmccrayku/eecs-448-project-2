@@ -1,3 +1,10 @@
+  /**
+   File Name: Board.h
+   Authors: Regan Janssen, Andrew Loaiza, Chen Lu, Jui Nagarkar, Natasha Shirley
+   Description: Board class creates grid and places the location of the ship. Allows players to view the board
+   Date: Sept. 19, 2021
+   */ 
+
 #ifndef BOARD_H
 #define BOARD_H
 
