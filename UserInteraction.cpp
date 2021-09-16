@@ -72,11 +72,22 @@ void UserInteraction::playGame()
         if(p1Turn == true)
         {
           player2->fireAt();
+          if(player1.checkWin()==true)
+          {
+            cout << "player 1 wins!!";
+            break;
+          }
         }
         else
         {
           player1->fireAt();
+          if(player2.checkWin() == true)
+          {
+            cout << "player 2 wins!!";
+            break;
+          }
         }
+        
 
         p1Turn = !p1Turn;
       }
