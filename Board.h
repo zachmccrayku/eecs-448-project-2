@@ -19,11 +19,11 @@ private:
   int numCols = 10; // Sets the number of columns for the board
   Ship m_grid[9][10]; // 2D array, of type Ship
   int m_numShips;
-  string fireAtSpot; 
-  int fireSpotLetter; 
+  string fireAtSpot;
+  int fireSpotLetter;
   int fireSpotNum;
   bool canBeFired;
-  char choice; 
+  char choice;
 
 public:
   /*
@@ -45,27 +45,27 @@ public:
      *@param number of ships
      */
     void shipPlacement(int numShips);
-  
+
       /*
     *Converts string input to int, checks for out of bounds
     *@param string
     *@return int value
      */
   void convertString();
-  
+
     /*
   *User chooses coordinates to shoot at
   *@param None
   *@returns the coordinate of the shot
   */
-  int fireAt(); 
-  
+  void fireAt();
+
    /*
   *Checks to see if the opponents ship sunk
   *@param None
   *@return boolean value for ship status
   */
-  bool isSunk(); 
+  bool isSunk(int row, int col);
 
   };
 
