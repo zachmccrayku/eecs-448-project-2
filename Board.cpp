@@ -29,6 +29,31 @@ void Board::viewBoard()
   }
 
 }
+void Board::viewOBoard()
+{
+    char* array[9][10];
+    cout << "  A B C D E F G H I J " << endl;
+    for(int x = 0; x < 9; x++)
+    {
+        cout << x + 1 << " ";
+    
+        for(int y = 0; y < 10; y++)
+        {
+
+            if(m_grid[9][10] == '^')
+            {
+                cout << "_";
+            }
+            else
+            {
+                cout << getChar();
+            }
+            cout << Board.array[x][y].gridChar << " ";
+        }
+        cout << endl;
+    }
+
+}
 
 
 void Board::shipPlacement(int numShips)
