@@ -8,6 +8,7 @@
 #ifndef USERINTERACTION_H
 #define USERINTERACTION_H
 
+#include <cstdlib>
 #include "Board.h"
 #include <iostream>
 using namespace std;
@@ -27,7 +28,12 @@ public:
    */
   UserInteraction();
 
-  ~UserInteraction(); // avoid memory leaks!
+  // destructor, deletes allocated memory
+  ~UserInteraction();
+
+
+  // avoids compiler infinite loop when non-integer value is input when one was expected
+  int isInteger();
 
   /*
    *Run function calls playgame which contains the main game functionality
