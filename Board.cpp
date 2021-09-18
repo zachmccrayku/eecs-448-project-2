@@ -3,6 +3,7 @@
 Board::Board()
 {
   m_numShips = 0;
+  m_shipsSunk = 0;
 }
 
 Board::~Board(){}
@@ -259,7 +260,7 @@ bool Board::isSunk(int row, int col)
         {
           Sunk = true;
           return(Sunk);
-          counter++;
+          m_shipsSunk++;
         }
       }
       break;
@@ -286,7 +287,7 @@ bool Board::isSunk(int row, int col)
         }
         else if(m_grid[i-1][col].getChar() == 'X')
         {
-          counter++;
+          m_shipsSunk++;
           Sunk=true;
           return(Sunk);
         }
@@ -299,5 +300,5 @@ bool Board::isSunk(int row, int col)
 
 bool Board::checkWin()
 {
-  return(counter == m_numShips);
+  return(m_shipsSunk == m_numShips);
 }

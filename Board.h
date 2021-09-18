@@ -21,12 +21,12 @@ private:
   int numCols = 10; // Sets the number of columns for the board
   Ship m_grid[9][10]; // 2D array of type Ship
   // char m_oppGrid[9][10]; // 2D array of char, this is what opponent will view
-  int m_numShips;
-  string fireAtSpot;
   int m_row;
   int m_col;
+  int m_numShips;
+  int m_shipsSunk;
+  string fireAtSpot;
   bool canBeFired;
-  int counter;
 
 public:
   /*
