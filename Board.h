@@ -21,57 +21,66 @@ private:
   int numCols = 10; // Sets the number of columns for the board
   Ship m_grid[9][10]; // 2D array of type Ship
   // char m_oppGrid[9][10]; // 2D array of char, this is what opponent will view
-  int m_row;
-  int m_col;
-  int m_numShips;
-  int m_shipsSunk;
-  string fireAtSpot;
-  bool canBeFired;
+  int m_row; //current row location
+  int m_col; //current col location
+  int m_numShips; //number of ships
+  int m_shipsSunk; //number of ships that have been sunk
+  string userInput; //string to store user input
+  bool canBeFired; //true if the spot can be fired
 
 public:
   /*
   *Initializes a 9x10 board
   *@param None
+  *@return none
   */
   Board();
-
+  
+  /*
+  *deallocates the board object
+  *@param None
+  *@return none
+  */
   ~Board(); // avoid memory leaks!
 
   /*
   *Allows players to view their board as well as the opponents board with their hits and misses
   *@param None
+  *@return none
   */
   void viewBoard();
 
     /*
   *Allows players to view other player's board as well as the opponents board with their hits and misses
   *@param None
+  *@return none
   */
   void viewOBoard();
 
   /*
   *Ship is placed on the board
   *@param number of ships
+  *@return none
   */
   void shipPlacement(int numShips);
 
   /*
   *Converts string input to int, checks for out of bounds
-  *@param string
-  *@return int value
+  *@param none
+  *@return none
   */
   void convertCoord();
 
   /*
   *User chooses coordinates to shoot at
   *@param None
-  *@returns the coordinate of the shot
+  *@returns none
   */
   void fireAt();
 
   /*
   *Checks to see if the opponents ship sunk
-  *@param None
+  *@param int for row and col location
   *@return boolean value for ship status
   */
   bool isSunk(int row, int col);
