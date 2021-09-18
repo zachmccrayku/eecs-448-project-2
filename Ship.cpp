@@ -2,7 +2,7 @@
 
 Ship::Ship()
 {
-  gridChar = '_'; // no hits or ships
+  m_char = '_'; // no hits or ships
   m_isShip = false;
   m_hasBeenHit = false;
   m_isHorizontal = true;
@@ -15,44 +15,48 @@ void Ship::placeShip()
   if (m_isShip == false)
   {
     m_isShip = true;
-    gridChar = '^'; // ship placed
+    m_char = '^'; // ship placed
   }
 }
 
-void Ship::hitShip()
+bool Ship::hitShip()
 {
+  bool hitSpot = false;
+
   if(m_isShip == true && m_hasBeenHit == false)
   {
     m_hasBeenHit = true;
-    gridChar = 'X'; // hit ship
+    m_char = 'X'; // hit ship
+    hitSpot = true;
   }
 
   if (m_isShip == false && m_hasBeenHit == false)
   {
     m_hasBeenHit = true;
-    gridChar = 'O'; // hit empty coordinate
+    m_char = 'O'; // hit empty coordinate
+    hitSpot = true;
   }
+
+  // if spot has already been hit, return false (they must redo attempt)
+  return(hitSpot);
 }
 
-void Ship::makeHorizontal(bool isHorizontal)
+void Ship::setOrientation(bool isHorizontal)
 {
-  if (isHorizontal)
-  {
-    m_isHorizontal = true;
-  }
+  m_isHorizontal = isHorizontal;
+}
 
-  else
-  {
-    m_isHorizontal = false;
-  }
+bool Ship::isHorizontal()
+{
+  return(m_isHorizontal);
 }
 
 char Ship::getChar()
 {
-  return(gridChar);
+  return(m_char);
 }
 
-void Ship::setChar(char temp)
+bool Ship::hasBeenHit()
 {
-  gridChar = temp;
+  return(m_hasBeenHit);
 }

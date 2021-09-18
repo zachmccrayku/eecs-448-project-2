@@ -23,7 +23,7 @@ void Board::viewBoard()
 
     for(int y = 0; y < 10; y++)
     {
-      cout << m_grid[x][y].gridChar << " ";
+      cout << m_grid[x][y].getChar() << " ";
     }
     cout << endl;
   }
@@ -31,7 +31,7 @@ void Board::viewBoard()
 }
 //void Board::viewOBoard(const Board player1, Board player2)
 void Board::viewOBoard()
-{ 
+{
   //Ship Player1Opp_grid[9][10];
   //Ship Player2Opp_grid[9][10];
   string space = " ";
@@ -62,13 +62,13 @@ void Board::viewOBoard()
 
     }
     cout << endl;
-    
+
     //if()//is player1
-    //  cout << Player1Opp_grid[x][y].gridChar << " " ;
+    //  cout << Player1Opp_grid[x][y].getChar() << " " ;
 
     //if()//is player2
-    //  cout <<Player2Opp_grid[x][y].gridChar << " " ;
-    
+    //  cout <<Player2Opp_grid[x][y].getChar() << " " ;
+
     cout << endl;
   }
 
@@ -129,7 +129,7 @@ void Board::shipPlacement(int numShips)
       for (int j = 0; j < i; j++)
       {
         m_grid[row][col+j].placeShip();
-        m_grid[row][col+j].makeHorizontal(isHorizontal);
+        m_grid[row][col+j].setOrientation(isHorizontal);
       }
     }
 
@@ -138,7 +138,7 @@ void Board::shipPlacement(int numShips)
       for (int j = 0; j < i; j++)
       {
         m_grid[row+j][col].placeShip();
-        m_grid[row+j][col].makeHorizontal(isHorizontal);
+        m_grid[row+j][col].setOrientation(isHorizontal);
       }
     }
 
@@ -161,7 +161,7 @@ void Board::fireAt()
   {
     canBeFired = true;
     viewOBoard();
-    if(m_grid[fireSpotNum][fireSpotLetter].m_hasBeenHit == true)
+    if(m_grid[fireSpotNum][fireSpotLetter].hasBeenHit() == true)
     {
       cout << "Hit\n";
     }
@@ -211,9 +211,9 @@ void Board::convertString()
 }
 
 bool Board::isSunk(int row, int col)
-{ 
+{
   bool Sunk = false;
-  if(m_grid[row][col].m_isHorizontal == true)
+  if(m_grid[row][col].isHorizontal() == true)
   {
     for(int i = col; i < numCols; i++)
     {
@@ -232,7 +232,7 @@ bool Board::isSunk(int row, int col)
           isSunk(row, i-1);
         }
         else if(m_grid[row][i-1].getChar() == 'X')
-        { 
+        {
           Sunk = true;
           return(Sunk);
           counter++;
