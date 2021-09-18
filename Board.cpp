@@ -31,7 +31,7 @@ void Board::viewBoard()
 
 void Board::viewOBoard()
 {
-  cout << "Opponent's board:\n";
+  cout << "Your attacks:\n";
   cout << "  A B C D E F G H I J " << endl;
 
   for(int x = 0; x < numRows; x++)
@@ -115,7 +115,7 @@ void Board::shipPlacement(int numShips)
 
   cout << "Here is your final ship placement:\n";
   viewBoard();
-  cout << "Press Enter to Continue ";
+  cout << "\nPress Enter to Continue ";
   cin.ignore();
   cin.ignore();
   system("clear");
@@ -155,7 +155,7 @@ void Board::fireAt()
       else // if spot hit did not contain a ship
       {
         hitShip = false;
-        cout << "You missed.\n";
+        cout << "\nYou missed.\n";
       }
     }
 
@@ -166,7 +166,7 @@ void Board::fireAt()
 
   } while((!validHit || hitShip) && !hasLost()); // if player hits ship, player can shoot again
 
-  cout << "Press Enter to Continue ";
+  cout << "\nPress Enter to Continue ";
   cin.ignore();
   cin.ignore();
 
