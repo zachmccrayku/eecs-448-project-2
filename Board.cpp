@@ -6,54 +6,51 @@ Board::Board()
   m_shipsSunk = 0;
 }
 
+
 Board::~Board(){}
+
 
 void Board::viewBoard()
 {
   cout << "Your board:\n";
   cout << "  A B C D E F G H I J " << endl;
 
-  for(int x = 0; x < 9; x++)
+  for(int x = 1; x <= numRows; x++)
   {
-    cout << x + 1 << " ";
-
-    for(int y = 0; y < 10; y++)
+    cout << x << " ";
+    for(int y = 0; y < numCols; y++)
     {
       cout << m_grid[x][y].getChar() << " ";
     }
     cout << endl;
   }
-
 }
+
 
 void Board::viewOBoard()
 {
   cout << "Opponent's board:\n";
   cout << "  A B C D E F G H I J " << endl;
-  for(int x = 0; x < 9; x++)
+  for(int x = 1; x <= numRows; x++)
   {
-    cout << x + 1 << " ";
+    cout << x  << " ";
 
-    for(int y = 0; y < 10; y++)
+    for(int y = 0; y < numCols; y++)
     {
       if      (m_grid[x][y].getChar() == '^'){cout << "_ ";}
       else if (m_grid[x][y].getChar() == '*'){cout << "X ";}
       else    {cout << m_grid[x][y].getChar() << " ";}
     }
-
     cout << endl;
   }
-
 }
 
 
 void Board::shipPlacement(int numShips)
 {
   m_numShips = numShips;
-
   bool isHorizontal = true;
   char orientation;
-  string coordinate;
   int row;
   int col;
 
@@ -253,11 +250,11 @@ void Board::convertCoord()
   do
   {
     cout << "Choose a Coordinate: ";
-    cin >> fireAtSpot;
-    if(fireAtSpot.length() == 2)
+    cin >> userInput;
+    if(userInput.length() == 2)
     {
-      m_col = int(fireAtSpot.at(0));
-      m_row = int(fireAtSpot.at(1));
+      m_col = int(userInput.at(0));
+      m_row = int(userInput.at(1));
       if(m_row >= 49 || m_row <=57)
       {
         m_row = m_row-49;
