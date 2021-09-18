@@ -47,7 +47,7 @@ void Board::viewOBoard()
 void Board::shipPlacement(int numShips)
 {
   m_numShips = numShips;
-  isHorizontal = true;
+  bool isHorizontal = true;
   char orientation;
   for (int i = 1; i <= m_numShips; i++)
   {
@@ -61,23 +61,31 @@ void Board::shipPlacement(int numShips)
         cin >> orientation;
         if (orientation != 'H' && orientation != 'V') cout << "Inavlid input. Try again.";
       } while (orientation != 'H' && orientation != 'V');
+
       if (orientation == 'V')
       {
         isHorizontal = false;
       }
     }
+
     do {
       validInput = false;
+
       // cout statement asking for coordinate
       cout << "Choose the starting ";
       if (i != 1) isHorizontal ? cout << "leftmost " : cout << "topmost ";
       cout << "coordinate where you would like to place your ";
       isHorizontal ? cout << "1 x " << i : cout << i << " x 1";
       cout << " ship.\n";
+
       // obtain row and column from user
       convertCoord();
-      checkValid(i, isHorizontal);
+
+      // check if shiip can be placed here
+      checkValidShipPlacement(i, isHorizontal);
+
     } while(validInput == false);
+
     if (isHorizontal)
     {
       for (int j = 0; j < i; j++)
@@ -86,16 +94,19 @@ void Board::shipPlacement(int numShips)
         m_grid[m_row][m_col+j].setOrientation(isHorizontal);
       }
     }
+
     else
     {
       for (int j = 0; j < i; j++)
       {
-        m_grid[m_row+j][col].placeShip();
-        m_grid[m_row+j][col].setOrientation(isHorizontal);
+        m_grid[m_row+j][m_col].placeShip();
+        m_grid[m_row+j][m_col].setOrientation(isHorizontal);
       }
     }
+
     system("clear");
   } // loop to next iteration
+
   cout << "Here is your final ship placement:\n";
   viewBoard();
   cout << "Press Enter to Continue ";
@@ -157,7 +168,7 @@ void Board::convertCoord()
         }
         else
         {
-          validInput == false; 
+          validInput = false;
         }
       }
       else
@@ -169,52 +180,59 @@ void Board::convertCoord()
 }
 
 
-void Board::checkValid(int num, bool horizontal)
+void Board::checkValidShipPlacement(int shipSize, bool horizontal)
 {
-     if (horizontal)
+  validInput = true;
+
+  if (horizontal)
+  {
+    if (m_col + shipSize > numCols)
+    {
+      validInput = false;
+      invalidCoordMessage = "Ship goes off grid.";
+    }
+
+    else
+    {
+      for (int j = 0; j < shipSize; j++)
       {
-        if (m_col + num > numCols)
+        if (m_grid[m_row][m_col+j].isShip())
         {
           validInput = false;
-          invalidCoordMessage = "Ship goes off grid.";
-        }
-        else
-        {
-          for (int j = 0; j < num; j++)
-          {
-            if (m_grid[m_row][m_col+j].isShip())
-            {
-              validInput = false;
-              invalidCoordMessage = "Ships overlap.";
-              break;
-             }
-           }
+          invalidCoordMessage = "Ships overlap.";
+          break;
         }
       }
-      else if (horizontal)
+    }
+  }
+
+  else if (horizontal)
+  {
+    if ((m_row + shipSize > numRows))
+    {
+      validInput = false;
+      invalidCoordMessage = "Ship goes off grid.";
+    }
+
+    else
+    {
+      for (int j = 0; j < shipSize; j++)
       {
-        if ((m_row + num > numRows))
+        if (m_grid[m_row+j][m_col].isShip())
         {
           validInput = false;
-          invalidCoordMessage = "Ship goes off grid.";
-        }
-        else
-        {
-          for (int j = 0; j < num; j++)
-          {
-            if (m_grid[m_row+j][m_col].isShip())
-            {
-              validInput = false;
-              invalidCoordMessage = "Ships overlap.";
-              break;
-            }
-          }
+          invalidCoordMessage = "Ships overlap.";
+          break;
         }
       }
-      if (validInput == false)
-      {
-        cout << "ERROR: " << invalidCoordMessage << "\n\n";
-      }
+    }
+  }
+
+  if (validInput == false)
+  {
+    cout << "ERROR: " << invalidCoordMessage << "\n\n";
+  }
+
 }
 
 
