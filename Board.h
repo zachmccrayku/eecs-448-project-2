@@ -27,6 +27,7 @@ private:
   int m_shipsSunk; //number of ships that have been sunk
   string userInput; //string to store user input
   bool validInput; //true if valid 
+  string invalidCoordMessage; //stores error message
 
 public:
   /*
@@ -70,6 +71,13 @@ public:
   *@return none
   */
   void convertCoord();
+  
+  /*
+  *Checks if ship placement is valid
+  *@param int number for for loops and a bool for orientation
+  *@return none
+  */
+  void checkValid(int num, bool horizontal);
 
   /*
   *User chooses coordinates to shoot at
