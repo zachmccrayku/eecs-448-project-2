@@ -80,7 +80,7 @@ void Board::shipPlacement(int numShips)
       convertCoord();
       if (isHorizontal)
       {
-        if (col + i > numCols)
+        if (m_col + i > numCols)
         {
           validInput = false;
           invalidCoordMessage = "Ship goes off grid.";
@@ -100,7 +100,7 @@ void Board::shipPlacement(int numShips)
       }
       else if (!isHorizontal)
       {
-        if ((row + i > numRows))
+        if ((m_row + i > numRows))
         {
           validInput = false;
           invalidCoordMessage = "Ship goes off grid.";
@@ -109,7 +109,7 @@ void Board::shipPlacement(int numShips)
         {
           for (int j = 0; j < i; j++)
           {
-            if (m_grid[row+j][col].isShip())
+            if (m_grid[m_row+j][m_col].isShip())
             {
               validInput = false;
               invalidCoordMessage = "Ships overlap.";
@@ -125,7 +125,7 @@ void Board::shipPlacement(int numShips)
     } while(validInput == false);
     if (isHorizontal)
     {
-      for (int j = 0; j < numCols; j++)
+      for (int j = 0; j < i; j++)
       {
         m_grid[m_row][m_col+j].placeShip();
         m_grid[m_row][m_col+j].setOrientation(isHorizontal);
@@ -135,8 +135,8 @@ void Board::shipPlacement(int numShips)
     {
       for (int j = 0; j < i; j++)
       {
-        m_grid[row+j][col].placeShip();
-        m_grid[row+j][col].setOrientation(isHorizontal);
+        m_grid[m_row+j][col].placeShip();
+        m_grid[m_row+j][col].setOrientation(isHorizontal);
       }
     }
     system("clear");
