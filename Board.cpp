@@ -112,7 +112,7 @@ void Board::shipPlacement(int numShips)
         {
           for (int j = 0; j < i; j++)
           {
-            if (m_grid[row][col+j].isShip() == 1)
+            if (m_grid[row][col+j].isShip())
             {
               invalidCoord = true;
               invalidCoordMessage = "Ships overlap.";
@@ -135,7 +135,7 @@ void Board::shipPlacement(int numShips)
         {
           for (int j = 0; j < i; j++)
           {
-            if (m_grid[row+j][col].isShip() == 1)
+            if (m_grid[row+j][col].isShip())
             {
               invalidCoord = true;
               invalidCoordMessage = "Ships overlap.";
@@ -187,31 +187,64 @@ void Board::shipPlacement(int numShips)
 
 }
 
+// void Board::fireAt()
+// {
+//   canBeFired = false;
+//   convertCoord();
+//
+//   m_grid[m_row][m_col].hitShip();
+//
+//   if(m_grid[m_row][m_col].getChar() != '^')
+//   {
+//     canBeFired = true;
+//     viewOBoard();
+//     if(m_grid[m_row][m_col].hasBeenHit() == true)
+//     {
+//       cout << "Hit\n";
+//     }
+//     else
+//     {
+//       cout << "Miss\n";
+//     }
+//
+//   }
+//
+//   cout << "Press Enter to Continue ";
+//   cin.ignore();
+//   cin.ignore();
+// }
+
 void Board::fireAt()
 {
-  canBeFired = false;
-  convertCoord();
+  bool validHit = false;
+  bool hitShip = false;
 
-  m_grid[m_row][m_col].hitShip();
+  do {
+    convertCoord(); // this already checks for hit within bounds
 
-  if(m_grid[m_row][m_col].getChar() != '^')
-  {
-    canBeFired = true;
-    viewOBoard();
-    if(m_grid[m_row][m_col].hasBeenHit() == true)
+    if (m_grid[m_row][m_col].hitShip()) // checks if spot has been previously hit
     {
-      cout << "Hit\n";
-    }
-    else
-    {
-      cout << "Miss\n";
+      validHit = true;
+
+      if (m_grid[m_row][m_col].hasBeenHit() && m_grid[m_row][m_col].isShip()) // if spot hit contained a ship
+      {
+        hitShip = true;
+        cout << "You hit an enemy ship!\n";
+      }
+
+      else // if spot hit did not contain a ship
+      {
+        hitShip = false;
+        cout << "You missed.\n";
+      }
     }
 
-  }
+  } while(!validHit || hitShip); // if player hits ship, player can shoot again
 
   cout << "Press Enter to Continue ";
   cin.ignore();
   cin.ignore();
+
 }
 
 void Board::convertCoord()

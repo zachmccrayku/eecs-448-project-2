@@ -64,7 +64,7 @@ void UserInteraction::playGame()
   while(1)
   {
     int choose;
-    
+
     do
     {
       p1Turn ? cout << "Player 1's turn\n\n" : cout << "Player 2's turn\n\n";
@@ -87,6 +87,7 @@ void UserInteraction::playGame()
       if(p1Turn)
       {
         player2->fireAt();
+
         if (player1->checkWin()==true)
         {
           cout << "Player 1 wins!!";
@@ -97,6 +98,7 @@ void UserInteraction::playGame()
       else
       {
         player1->fireAt();
+
         if (player2->checkWin() == true)
         {
           cout << "Player 2 wins!!";
