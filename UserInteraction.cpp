@@ -45,11 +45,11 @@ void UserInteraction::playGame()
   do
   {
     cout << "Input the number of ships you wish to play with (1-6): ";
-    cin >> numShips;
+    numShips = isInteger();
 
     if (numShips > 6 || numShips <= 0)
     {
-      cout << "Sorry, the value entered was not between the allowed value. Please try again.";
+      cout << "ERROR: Enter a number between 1 and 6.\n\n";
     }
   } while(numShips > 6 || numShips <= 0);
 
@@ -71,12 +71,12 @@ void UserInteraction::playGame()
       cout << "3. View my attacks to opponent\n";
       cout << "4. Quit\n";
       cout << "What would you like to do: ";
-      cin >> choose;
+      choose = isInteger();
 
       if (choose <= 0 || choose > 4)
       {
         cout << "Sorry, the value entered was not between the allowed value. Please try again.\n";
-        cin >>choose;
+        cin >> choose;
       }
     } while(choose <= 0 || choose > 4);
 

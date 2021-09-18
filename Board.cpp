@@ -85,8 +85,8 @@ void Board::shipPlacement(int numShips)
 
     // cout statement
     cout << "Choose the starting ";
-    (isHorizontal ? cout << "leftmost" : cout << "topmost");
-    cout << " coordinate where you would like to place your ";
+    if (i != 1) isHorizontal ? cout << "leftmost " : cout << "topmost ";
+    cout << "coordinate where you would like to place your ";
     isHorizontal ? cout << "1 x " << i : cout << i << " x 1";
     cout << " ship.\n";
 
