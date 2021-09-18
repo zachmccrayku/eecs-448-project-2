@@ -25,7 +25,7 @@ private:
   int m_col; //current col location
   int m_numShips; //number of ships
   int m_shipsSunk; //number of ships that have been sunk
-  string userInput; //string to store user input
+  string fireAtSpot; //string to store user input
   bool canBeFired; //true if the spot can be fired
 
 public:
