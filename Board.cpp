@@ -82,8 +82,10 @@ void Board::shipPlacement(int numShips)
 
 
     bool invalidCoord;
+    string invalidCoordMessage;
     do {
       invalidCoord = false;
+      invalidCoordMessage = "";
 
       // cout statement asking for coordinate
       cout << "Choose the starting ";
@@ -103,6 +105,7 @@ void Board::shipPlacement(int numShips)
         if (col + i > numCols)
         {
           invalidCoord = true;
+          invalidCoordMessage = "Ship goes off grid.";
         }
 
         else
@@ -112,6 +115,8 @@ void Board::shipPlacement(int numShips)
             if (m_grid[row][col+j].isShip() == 1)
             {
               invalidCoord = true;
+              invalidCoordMessage = "Ships overlap.";
+              break;
             }
           }
 
@@ -123,6 +128,7 @@ void Board::shipPlacement(int numShips)
         if ((row + i > numRows))
         {
           invalidCoord = true;
+          invalidCoordMessage = "Ship goes off grid.";
         }
 
         else
@@ -132,14 +138,17 @@ void Board::shipPlacement(int numShips)
             if (m_grid[row+j][col].isShip() == 1)
             {
               invalidCoord = true;
+              invalidCoordMessage = "Ships overlap.";
+              break;
             }
           }
+
         }
       }
 
       if (invalidCoord)
       {
-        cout << "ERROR: Ships overlap, are adjacent, or go off grid. Choose another coordinate.\n\n";
+        cout << "ERROR: " << invalidCoordMessage << "\n\n";
       }
 
     } while(invalidCoord);
