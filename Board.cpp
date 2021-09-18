@@ -14,7 +14,6 @@ void Board::viewBoard()
 {
   cout << "Your board:\n";
   cout << "  A B C D E F G H I J " << endl;
-
   for(int x = 1; x <= numRows; x++)
   {
     cout << x << " ";
@@ -34,7 +33,6 @@ void Board::viewOBoard()
   for(int x = 1; x <= numRows; x++)
   {
     cout << x  << " ";
-
     for(int y = 0; y < numCols; y++)
     {
       if      (m_grid[x][y].getChar() == '^'){cout << "_ ";}
@@ -51,13 +49,9 @@ void Board::shipPlacement(int numShips)
   m_numShips = numShips;
   bool isHorizontal = true;
   char orientation;
-  int row;
-  int col;
-
   for (int i = 1; i <= m_numShips; i++)
   {
     viewBoard(); // show player their current board with ship placements
-
     // choose horizontal or vertical ship placement
     if (i != 1)
     {
@@ -65,103 +59,78 @@ void Board::shipPlacement(int numShips)
       {
         cout << "Do you want to place your ship horizontal (H) or vertical (V)?: ";
         cin >> orientation;
-
         if (orientation != 'H' && orientation != 'V') cout << "Inavlid input. Try again.";
-
       } while (orientation != 'H' && orientation != 'V');
-
       if (orientation == 'V')
       {
         isHorizontal = false;
-        // by default initialized to true in Ship class
       }
     }
-
-
-    bool invalidCoord;
     string invalidCoordMessage;
     do {
-      invalidCoord = false;
+      validInput = false;
       invalidCoordMessage = "";
-
       // cout statement asking for coordinate
       cout << "Choose the starting ";
       if (i != 1) isHorizontal ? cout << "leftmost " : cout << "topmost ";
       cout << "coordinate where you would like to place your ";
       isHorizontal ? cout << "1 x " << i : cout << i << " x 1";
       cout << " ship.\n";
-
       // obtain row and column from user
       convertCoord();
-
-      row = m_row;
-      col = m_col;
-
       if (isHorizontal)
       {
         if (col + i > numCols)
         {
-          invalidCoord = true;
+          validInput = false;
           invalidCoordMessage = "Ship goes off grid.";
         }
-
         else
         {
           for (int j = 0; j < i; j++)
           {
-            if (m_grid[row][col+j].isShip())
+            if (m_grid[m_row][m_col+j].isShip())
             {
-              invalidCoord = true;
+              validInput = false;
               invalidCoordMessage = "Ships overlap.";
               break;
-            }
-          }
-
+             }
+           }
         }
       }
-
       else if (!isHorizontal)
       {
         if ((row + i > numRows))
         {
-          invalidCoord = true;
+          validInput = false;
           invalidCoordMessage = "Ship goes off grid.";
         }
-
         else
         {
           for (int j = 0; j < i; j++)
           {
             if (m_grid[row+j][col].isShip())
             {
-              invalidCoord = true;
+              validInput = false;
               invalidCoordMessage = "Ships overlap.";
               break;
             }
           }
-
         }
       }
-
-      if (invalidCoord)
+      if (validInput == false)
       {
         cout << "ERROR: " << invalidCoordMessage << "\n\n";
       }
-
-    } while(invalidCoord);
-
-    row = m_row;
-    col = m_col;
-
+    } while(validInput == false);
     if (isHorizontal)
     {
-      for (int j = 0; j < i; j++)
+      for (int j = 0; j < numCols; j++)
       {
-        m_grid[row][col+j].placeShip();
-        m_grid[row][col+j].setOrientation(isHorizontal);
+        m_grid[m_row][m_col+j].placeShip();
+        m_grid[m_row][m_col+j].setOrientation(isHorizontal);
       }
     }
-
     else
     {
       for (int j = 0; j < i; j++)
@@ -170,18 +139,14 @@ void Board::shipPlacement(int numShips)
         m_grid[row+j][col].setOrientation(isHorizontal);
       }
     }
-
     system("clear");
-
   } // loop to next iteration
-
-  cout << "Here is your final ship placement.\n";
+  cout << "Here is your final ship placement:\n";
   viewBoard();
   cout << "Press Enter to Continue ";
   cin.ignore();
   cin.ignore();
   system("clear");
-
 }
 
 // void Board::fireAt()
@@ -246,7 +211,7 @@ void Board::fireAt()
 
 void Board::convertCoord()
 {
-  canBeFired = false;
+  validInput = false;
   do
   {
     cout << "Choose a Coordinate: ";
@@ -261,22 +226,20 @@ void Board::convertCoord()
         if(m_col >= 65 || m_col <= 74)
         {
           m_col= m_col - 65;
-          canBeFired = true;
+          validInput = true;
         }
         else if(m_col >= 97 || m_col <= 106)
         {
           m_col= m_col - 97;
-          canBeFired = true;
+          validInput = true;
         }
       }
-
       else
       {
         cout << "Error! Try Again!";
       }
     }
-
-  } while(canBeFired == false);
+  } while(validInput == false);
 }
 
 bool Board::isSunk(int row, int col)
