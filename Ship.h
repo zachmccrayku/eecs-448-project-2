@@ -90,6 +90,8 @@ public:
   char getChar();
 
   bool hasBeenHit();
+
+  bool isShip();
 };
 
 #endif

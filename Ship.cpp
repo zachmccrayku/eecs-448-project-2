@@ -60,3 +60,8 @@ bool Ship::hasBeenHit()
 {
   return(m_hasBeenHit);
 }
+
+bool Ship::isShip()
+{
+  return(m_isShip);
+}

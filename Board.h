@@ -23,8 +23,8 @@ private:
   // char m_oppGrid[9][10]; // 2D array of char, this is what opponent will view
   int m_numShips;
   string fireAtSpot;
-  int fireSpotLetter;
-  int fireSpotNum;
+  int m_row;
+  int m_col;
   bool canBeFired;
   int counter;
 
@@ -60,7 +60,7 @@ public:
   *@param string
   *@return int value
   */
-  void convertString();
+  void convertCoord();
 
   /*
   *User chooses coordinates to shoot at

@@ -25,7 +25,6 @@ void Board::viewBoard()
 
 }
 
-//void Board::viewOBoard(const Board player1, Board player2)
 void Board::viewOBoard()
 {
   cout << "Opponent's board:\n";
@@ -49,9 +48,6 @@ void Board::viewOBoard()
 
 void Board::shipPlacement(int numShips)
 {
-  // set ships onto grid
-  // called from UserInteraction
-
   m_numShips = numShips;
 
   bool isHorizontal = true;
@@ -83,19 +79,73 @@ void Board::shipPlacement(int numShips)
       }
     }
 
-    // cout statement
-    cout << "Choose the starting ";
-    if (i != 1) isHorizontal ? cout << "leftmost " : cout << "topmost ";
-    cout << "coordinate where you would like to place your ";
-    isHorizontal ? cout << "1 x " << i : cout << i << " x 1";
-    cout << " ship.\n";
 
-    convertString();
+    bool invalidCoord;
+    do {
+      invalidCoord = false;
 
-    row = fireSpotNum;
-    col = fireSpotLetter;
+      // cout statement asking for coordinate
+      cout << "Choose the starting ";
+      if (i != 1) isHorizontal ? cout << "leftmost " : cout << "topmost ";
+      cout << "coordinate where you would like to place your ";
+      isHorizontal ? cout << "1 x " << i : cout << i << " x 1";
+      cout << " ship.\n";
 
-    // check if coordinate is valid
+      // obtain row and column from user
+      convertCoord();
+
+      row = m_row;
+      col = m_col;
+
+      if (isHorizontal)
+      {
+        if (col + i > numCols)
+        {
+          invalidCoord = true;
+        }
+
+        else
+        {
+          for (int j = 0; j < i; j++)
+          {
+            if (m_grid[row][col+j].isShip() == 1)
+            {
+              invalidCoord = true;
+            }
+          }
+
+        }
+      }
+
+      else if (!isHorizontal)
+      {
+        if ((row + i > numRows))
+        {
+          invalidCoord = true;
+        }
+
+        else
+        {
+          for (int j = 0; j < i; j++)
+          {
+            if (m_grid[row+j][col].isShip() == 1)
+            {
+              invalidCoord = true;
+            }
+          }
+        }
+      }
+
+      if (invalidCoord)
+      {
+        cout << "ERROR: Ships overlap, are adjacent, or go off grid. Choose another coordinate.\n\n";
+      }
+
+    } while(invalidCoord);
+
+    row = m_row;
+    col = m_col;
+
     if (isHorizontal)
     {
       for (int j = 0; j < i; j++)
@@ -125,15 +175,15 @@ void Board::shipPlacement(int numShips)
 void Board::fireAt()
 {
   canBeFired = false;
-  convertString();
+  convertCoord();
 
-  m_grid[fireSpotNum][fireSpotLetter].hitShip();
+  m_grid[m_row][m_col].hitShip();
 
-  if(m_grid[fireSpotNum][fireSpotLetter].getChar() != '^')
+  if(m_grid[m_row][m_col].getChar() != '^')
   {
     canBeFired = true;
     viewOBoard();
-    if(m_grid[fireSpotNum][fireSpotLetter].hasBeenHit() == true)
+    if(m_grid[m_row][m_col].hasBeenHit() == true)
     {
       cout << "Hit\n";
     }
@@ -149,7 +199,7 @@ void Board::fireAt()
   cin.ignore();
 }
 
-void Board::convertString()
+void Board::convertCoord()
 {
   canBeFired = false;
   do
@@ -158,19 +208,19 @@ void Board::convertString()
     cin >> fireAtSpot;
     if(fireAtSpot.length() == 2)
     {
-      fireSpotLetter = int(fireAtSpot.at(0));
-      fireSpotNum = int(fireAtSpot.at(1));
-      if(fireSpotNum >= 49 || fireSpotNum <=57)
+      m_col = int(fireAtSpot.at(0));
+      m_row = int(fireAtSpot.at(1));
+      if(m_row >= 49 || m_row <=57)
       {
-        fireSpotNum = fireSpotNum-49;
-        if(fireSpotLetter >= 65 || fireSpotLetter <= 74)
+        m_row = m_row-49;
+        if(m_col >= 65 || m_col <= 74)
         {
-          fireSpotLetter= fireSpotLetter - 65;
+          m_col= m_col - 65;
           canBeFired = true;
         }
-        else if(fireSpotLetter >= 97 || fireSpotLetter <= 106)
+        else if(m_col >= 97 || m_col <= 106)
         {
-          fireSpotLetter= fireSpotLetter - 97;
+          m_col= m_col - 97;
           canBeFired = true;
         }
       }
