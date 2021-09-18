@@ -5,16 +5,11 @@ Board::Board()
   m_numShips = 0;
 }
 
-Board::~Board()
-{
-
-}
+Board::~Board(){}
 
 void Board::viewBoard()
 {
-  // view player's own board
-  // view oppoenent's board
-  cout << "Your Board\n";
+  cout << "Your board:\n";
   cout << "  A B C D E F G H I J " << endl;
 
   for(int x = 0; x < 9; x++)
@@ -29,13 +24,11 @@ void Board::viewBoard()
   }
 
 }
+
 //void Board::viewOBoard(const Board player1, Board player2)
 void Board::viewOBoard()
 {
-  //Ship Player1Opp_grid[9][10];
-  //Ship Player2Opp_grid[9][10];
-  string space = " ";
-  cout << "Opponent's Board\n";
+  cout << "Opponent's board:\n";
   cout << "  A B C D E F G H I J " << endl;
   for(int x = 0; x < 9; x++)
   {
@@ -43,31 +36,10 @@ void Board::viewOBoard()
 
     for(int y = 0; y < 10; y++)
     {
-      if(m_grid[x][y].getChar() == '^')
-      {
-        cout << "_" << space  ;
-      }
-      if(m_grid[x][y].getChar() =='_')
-	{
-            cout << "_"<< space ;
-	}
-	if(m_grid[x][y].getChar() =='X')
-	{
-		cout << "X"<< space ;
-	}
-	if(m_grid[x][y].getChar() =='O')
-	{
-		cout << "O"<< space ;
-	}
-
+      if      (m_grid[x][y].getChar() == '^'){cout << "_ ";}
+      else if (m_grid[x][y].getChar() == '*'){cout << "X ";}
+      else    {cout << m_grid[x][y].getChar() << " ";}
     }
-    cout << endl;
-
-    //if()//is player1
-    //  cout << Player1Opp_grid[x][y].getChar() << " " ;
-
-    //if()//is player2
-    //  cout <<Player2Opp_grid[x][y].getChar() << " " ;
 
     cout << endl;
   }
@@ -171,8 +143,10 @@ void Board::fireAt()
     }
 
   }
-  cout << "Press Any Key to Continue";
-  cin >> fireAtSpot;
+
+  cout << "Press Enter to Continue ";
+  cin.ignore();
+  cin.ignore();
 }
 
 void Board::convertString()

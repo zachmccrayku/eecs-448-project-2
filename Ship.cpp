@@ -26,7 +26,7 @@ bool Ship::hitShip()
   if(m_isShip == true && m_hasBeenHit == false)
   {
     m_hasBeenHit = true;
-    m_char = 'X'; // hit ship
+    m_char = '*'; // your ship has been hit
     hitSpot = true;
   }
 

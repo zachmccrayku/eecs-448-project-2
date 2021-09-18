@@ -104,6 +104,7 @@ void UserInteraction::playGame()
       }
 
       p1Turn = !p1Turn;
+      system("clear");
     }
 
     if(choose == 2)

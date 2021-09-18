@@ -9,6 +9,7 @@
 #define USERINTERACTION_H
 
 #include <cstdlib>
+#include <limits>
 #include "Board.h"
 #include <iostream>
 using namespace std;

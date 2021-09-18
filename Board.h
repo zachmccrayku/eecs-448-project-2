@@ -8,6 +8,8 @@ Date: Sept. 19, 2021
 #ifndef BOARD_H
 #define BOARD_H
 
+#include <cstdlib>
+#include <limits>
 #include "Ship.h"
 
 using namespace std;
@@ -17,9 +19,8 @@ class Board
 private:
   int numRows = 9; // Sets the number of rows for the board
   int numCols = 10; // Sets the number of columns for the board
-  Ship m_grid[9][10]; // 2D array, of type Ship
-  Ship Player1Opp_grid[9][10];
-  Ship Player2Opp_grid[9][10];
+  Ship m_grid[9][10]; // 2D array of type Ship
+  // char m_oppGrid[9][10]; // 2D array of char, this is what opponent will view
   int m_numShips;
   string fireAtSpot;
   int fireSpotLetter;
@@ -41,7 +42,7 @@ public:
   *@param None
   */
   void viewBoard();
-  
+
     /*
   *Allows players to view other player's board as well as the opponents board with their hits and misses
   *@param None
@@ -60,7 +61,7 @@ public:
   *@return int value
   */
   void convertString();
-  
+
   /*
   *User chooses coordinates to shoot at
   *@param None
@@ -75,7 +76,7 @@ public:
   */
   bool isSunk(int row, int col);
 
-  
+
   /*
   *Checks to see if all ships have been sunk
   *@param None
