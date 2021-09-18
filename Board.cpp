@@ -104,64 +104,31 @@ void Board::shipPlacement(int numShips)
   system("clear");
 }
 
-// void Board::fireAt()
-// {
-//   canBeFired = false;
-//   convertCoord();
-//
-//   m_grid[m_row][m_col].hitShip();
-//
-//   if(m_grid[m_row][m_col].getChar() != '^')
-//   {
-//     canBeFired = true;
-//     viewOBoard();
-//     if(m_grid[m_row][m_col].hasBeenHit() == true)
-//     {
-//       cout << "Hit\n";
-//     }
-//     else
-//     {
-//       cout << "Miss\n";
-//     }
-//
-//   }
-//
-//   cout << "Press Enter to Continue ";
-//   cin.ignore();
-//   cin.ignore();
-// }
 
 void Board::fireAt()
 {
   bool validHit = false;
   bool hitShip = false;
-
   do {
     convertCoord(); // this already checks for hit within bounds
-
     if (m_grid[m_row][m_col].hitShip()) // checks if spot has been previously hit
     {
       validHit = true;
-
       if (m_grid[m_row][m_col].hasBeenHit() && m_grid[m_row][m_col].isShip()) // if spot hit contained a ship
       {
         hitShip = true;
         cout << "You hit an enemy ship!\n";
       }
-
       else // if spot hit did not contain a ship
       {
         hitShip = false;
         cout << "You missed.\n";
       }
     }
-
   } while(!validHit || hitShip); // if player hits ship, player can shoot again
-
   cout << "Press Enter to Continue ";
   cin.ignore();
   cin.ignore();
-
 }
 
 void Board::convertCoord()
@@ -187,6 +154,10 @@ void Board::convertCoord()
         {
           m_col= m_col - 97;
           validInput = true;
+        }
+        else
+        {
+          validInput == false; 
         }
       }
       else
