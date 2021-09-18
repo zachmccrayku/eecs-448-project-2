@@ -145,6 +145,11 @@ void Board::fireAt()
           cout << "You have sunk an enemy ship!\n";
           m_shipsSunk++;
         }
+
+        if (hasLost())
+        {
+          cout << "You have sunk all of your enemy's ships!\n";
+        }
       }
 
       else // if spot hit did not contain a ship
@@ -159,11 +164,13 @@ void Board::fireAt()
       cout << "This spot has already bit hit. Try again.\n";
     }
 
-  } while(!validHit || hitShip); // if player hits ship, player can shoot again
+  } while((!validHit || hitShip) && !hasLost()); // if player hits ship, player can shoot again
 
   cout << "Press Enter to Continue ";
   cin.ignore();
   cin.ignore();
+
+
 }
 
 void Board::convertCoord()
@@ -345,7 +352,7 @@ bool Board::isSunk(int row, int col)
 }
 
 
-bool Board::checkWin()
+bool Board::hasLost()
 {
   return(m_shipsSunk == m_numShips);
 }

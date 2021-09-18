@@ -103,7 +103,7 @@ public:
   *@param None
   *@return boolean value for win status
   */
-  bool checkWin();
+  bool hasLost();
 
 };
 

@@ -88,20 +88,20 @@ void UserInteraction::playGame()
       {
         player2->fireAt();
 
-        if (player1->checkWin()==true)
+        if (player2->hasLost())
         {
-          cout << "Player 1 wins!!";
+          cout << "\nPlayer 1 wins!!\n\n";
           break;
         }
       }
 
       else
       {
-        player1->fireAt();
+        player2->fireAt();
 
-        if (player2->checkWin() == true)
+        if (player2->hasLost())
         {
-          cout << "Player 2 wins!!";
+          cout << "\nPlayer 2 wins!!\n\n";
           break;
         }
       }
