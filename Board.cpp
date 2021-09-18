@@ -176,9 +176,14 @@ void Board::shipPlacement(int numShips)
 
     system("clear");
 
-    // loop to next iteration
+  } // loop to next iteration
 
-  }
+  cout << "Here is your final ship placement.\n";
+  viewBoard();
+  cout << "Press Enter to Continue ";
+  cin.ignore();
+  cin.ignore();
+  system("clear");
 
 }
 
