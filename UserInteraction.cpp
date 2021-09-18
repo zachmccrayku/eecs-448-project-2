@@ -47,22 +47,24 @@ void UserInteraction::playGame()
     cout << "Input the number of ships you wish to play with (1-6): ";
     numShips = isInteger();
 
-    if (numShips > 6 || numShips <= 0)
+    if (numShips < 1 || numShips > 6)
     {
       cout << "ERROR: Enter a number between 1 and 6.\n\n";
     }
-  } while(numShips > 6 || numShips <= 0);
+  } while(numShips < 1 || numShips > 6);
 
   system("clear");
-  cout << "Player 1 where you like to set your ship? ([A-J][1-9], ex: A9)\n";
+  cout << "Player 1 place your ships! [A-J][1-9]\n";
   player1->shipPlacement(numShips);
+
   system("clear");
-  cout << "Player 2 where you like to set your ship? ([A-J][1-9], ex: A9)\n";
+  cout << "Player 2 place your ships! [A-J][1-9]\n";
   player2->shipPlacement(numShips);
 
   while(1)
   {
     int choose;
+    
     do
     {
       p1Turn ? cout << "Player 1's turn\n\n" : cout << "Player 2's turn\n\n";
@@ -73,12 +75,11 @@ void UserInteraction::playGame()
       cout << "What would you like to do: ";
       choose = isInteger();
 
-      if (choose <= 0 || choose > 4)
+      if (choose < 1 || choose > 4)
       {
-        cout << "Sorry, the value entered was not between the allowed value. Please try again.\n";
-        cin >> choose;
+        cout << "ERROR: Invalid menu option. Try again.\n\n";
       }
-    } while(choose <= 0 || choose > 4);
+    } while(choose < 1 || choose > 4);
 
 
     if(choose == 1)
