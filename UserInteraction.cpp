@@ -117,7 +117,7 @@ void UserInteraction::playGame()
 
     if(choose == 3)
     {
-      p1Turn ? player2->viewOBoard() : player1->viewOBoard();
+      p1Turn ? player1->viewOBoard() : player2->viewOBoard();
     }
 
     if(choose == 4)
