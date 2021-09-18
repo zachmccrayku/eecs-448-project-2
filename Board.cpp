@@ -14,13 +14,16 @@ void Board::viewBoard()
 {
   cout << "Your board:\n";
   cout << "  A B C D E F G H I J " << endl;
-  for(int x = 1; x <= numRows; x++)
+
+  for(int x = 0; x < numRows; x++)
   {
-    cout << x << " ";
+    cout << x + 1 << " ";
+
     for(int y = 0; y < numCols; y++)
     {
       cout << m_grid[x][y].getChar() << " ";
     }
+
     cout << endl;
   }
 }
@@ -30,15 +33,18 @@ void Board::viewOBoard()
 {
   cout << "Opponent's board:\n";
   cout << "  A B C D E F G H I J " << endl;
-  for(int x = 1; x <= numRows; x++)
+
+  for(int x = 0; x < numRows; x++)
   {
-    cout << x  << " ";
+    cout << x + 1 << " ";
+
     for(int y = 0; y < numCols; y++)
     {
       if      (m_grid[x][y].getChar() == '^'){cout << "_ ";}
       else if (m_grid[x][y].getChar() == '*'){cout << "X ";}
       else    {cout << m_grid[x][y].getChar() << " ";}
     }
+    
     cout << endl;
   }
 }
@@ -145,38 +151,44 @@ void Board::fireAt()
 void Board::convertCoord()
 {
   validInput = false;
+
   do
   {
     cout << "Choose a Coordinate: ";
     cin >> userInput;
+
     if(userInput.length() == 2)
     {
       m_col = int(userInput.at(0));
       m_row = int(userInput.at(1));
-      if(m_row >= 49 || m_row <=57)
+
+      // row number
+      if (m_row >= 49 && m_row <=57)
       {
-        m_row = m_row-49;
-        if(m_col >= 65 || m_col <= 74)
+        m_row = m_row - 49;
+
+        // column letter, uppercase
+        if (m_col >= 65 && m_col <= 74)
         {
-          m_col= m_col - 65;
+          m_col = m_col - 65;
           validInput = true;
         }
-        else if(m_col >= 97 || m_col <= 106)
+
+        // column letter, lowercase
+        else if (m_col >= 97 && m_col <= 106)
         {
-          m_col= m_col - 97;
+          m_col = m_col - 97;
           validInput = true;
         }
-        else
-        {
-          validInput = false;
-        }
-      }
-      else
-      {
-        cout << "Error! Try Again!";
       }
     }
-  } while(validInput == false);
+
+    if (!validInput)
+    {
+      cout << "ERROR: Input a valid coordinate, [A-J][1-9], for example, A1.\n";
+    }
+
+  } while(!validInput);
 }
 
 
