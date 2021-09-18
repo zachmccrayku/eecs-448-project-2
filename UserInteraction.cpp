@@ -42,9 +42,9 @@ void UserInteraction::playGame()
       cin >> numShips;
     }
 
-    cout << "Player 1 where you like to set your ship?\n";
+    cout << "Player 1 where you like to set your ship?(A-J,1-9. ex. A9)\n";
     player1->shipPlacement(numShips);
-    cout << "Player 2 where you like to set your ship\n";
+    cout << "Player 2 where you like to set your ship(A-J,1-9. ex. A9)\n";
     player2->shipPlacement(numShips);
 
     while(1)
@@ -52,7 +52,7 @@ void UserInteraction::playGame()
       int choose;
       do
       {
-        p1Turn ? cout << "Player 1's turn\n" : cout << "Player 2's turn\n";
+        p1Turn ? cout << "\n\n\nPlayer 1's turn\n\n\n" : cout << "\n\n\nPlayer 2's turn\n\n\n";
         cout << "1. Attack opponent\n";
         cout << "2. View my board\n";
         cout << "3. View opponent board\n";
@@ -63,6 +63,7 @@ void UserInteraction::playGame()
         if (choose <= 0 || choose > 4)
         {
           cout << "Sorry, the value entered was not between the allowed value. Please try again.\n";
+          cin >>choose;
         }
       } while(choose <= 0 || choose > 4);
 

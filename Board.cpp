@@ -29,8 +29,12 @@ void Board::viewBoard()
   }
 
 }
+//void Board::viewOBoard(const Board player1, Board player2)
 void Board::viewOBoard()
-{
+{ 
+  //Ship Player1Opp_grid[9][10];
+  //Ship Player2Opp_grid[9][10];
+  string space = " ";
   cout << "Opponent's Board\n";
   cout << "  A B C D E F G H I J " << endl;
   for(int x = 0; x < 9; x++)
@@ -39,17 +43,32 @@ void Board::viewOBoard()
 
     for(int y = 0; y < 10; y++)
     {
-
       if(m_grid[x][y].getChar() == '^')
       {
-        cout << "_";
+        cout << "_" << space  ;
       }
-      else
-      {
-        cout << m_grid[x][y].getChar();
-      }
-      cout << m_grid[x][y].getChar() << " ";
+      if(m_grid[x][y].getChar() =='_')
+	{
+            cout << "_"<< space ;
+	}
+	if(m_grid[x][y].getChar() =='X')
+	{
+		cout << "X"<< space ;
+	}
+	if(m_grid[x][y].getChar() =='O')
+	{
+		cout << "O"<< space ;
+	}
+
     }
+    cout << endl;
+    
+    //if()//is player1
+    //  cout << Player1Opp_grid[x][y].gridChar << " " ;
+
+    //if()//is player2
+    //  cout <<Player2Opp_grid[x][y].gridChar << " " ;
+    
     cout << endl;
   }
 
@@ -192,28 +211,30 @@ void Board::convertString()
 }
 
 bool Board::isSunk(int row, int col)
-{
+{ 
+  bool Sunk = false;
   if(m_grid[row][col].m_isHorizontal == true)
   {
     for(int i = col; i < numCols; i++)
     {
       if(m_grid[row][i].getChar() == '^')
       {
-        return (false);
+        return (Sunk);
       }
       if(m_grid[row][i].getChar() == '_')
       {
         if(m_grid[row][i-1].getChar() == '^')
         {
-          return(false);
+          return(Sunk);
         }
         else if(i-1 != 0)
         {
           isSunk(row, i-1);
         }
         else if(m_grid[row][i-1].getChar() == 'X')
-        {
-          return(true);
+        { 
+          Sunk = true;
+          return(Sunk);
           counter++;
         }
       }
@@ -227,13 +248,13 @@ bool Board::isSunk(int row, int col)
     {
       if(m_grid[i][col].getChar() == '^')
       {
-        return (false);
+        return (Sunk);
       }
       if(m_grid[i][col].getChar() == '_')
       {
         if(m_grid[i-1][col].getChar() == '^')
         {
-          return(false);
+          return(Sunk);
         }
         else if(i-1 != 0)
         {
@@ -242,13 +263,14 @@ bool Board::isSunk(int row, int col)
         else if(m_grid[i-1][col].getChar() == 'X')
         {
           counter++;
-          return(true);
+          Sunk=true;
+          return(Sunk);
         }
       }
       break;
     }
   }
-  return(false);
+  return(Sunk);
 }
 
 bool Board::checkWin()
