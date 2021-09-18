@@ -86,6 +86,10 @@ public:
   */
   void fireAt();
 
+
+  bool isOnGrid(int row, int col);
+
+
   /*
   *Checks to see if the opponents ship sunk
   *@param int for row and col location

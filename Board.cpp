@@ -136,6 +136,7 @@ void Board::fireAt()
 
       if (m_grid[m_row][m_col].hasBeenHit() && m_grid[m_row][m_col].isShip()) // if spot hit contained a ship
       {
+        m_grid[m_row][m_col].hitShip();
         hitShip = true;
         cout << "You hit an enemy ship!\n";
 
@@ -264,69 +265,85 @@ void Board::checkValidShipPlacement(int shipSize, bool horizontal)
 
 }
 
+bool Board::isOnGrid(int row, int col)
+{
+  if (row >= 0 && row < numRows)
+  {
+    if (col >= 0 && col < numCols)
+    {
+      return(true);
+    }
+  }
+
+  return(false);
+}
 
 bool Board::isSunk(int row, int col)
 {
-  bool Sunk = false;
+  int temp;
+
   if(m_grid[row][col].isHorizontal() == true)
   {
-    for(int i = col; i < numCols; i++)
+    temp = col;
+    while (m_grid[row][temp].isShip())
     {
-      if(m_grid[row][i].getChar() == '^')
+      if (m_grid[row][temp].hasBeenHit() == false)
       {
-        return (Sunk);
+        return(false);
       }
-      if(m_grid[row][i].getChar() == '_')
-      {
-        if(m_grid[row][i-1].getChar() == '^')
-        {
-          return(Sunk);
-        }
-        else if(i-1 != 0)
-        {
-          isSunk(row, i-1);
-        }
-        else if(m_grid[row][i-1].getChar() == 'X')
-        {
-          Sunk = true;
-          return(Sunk);
-          m_shipsSunk++;
-        }
-      }
-      break;
+
+      temp--;
+
+      if (!isOnGrid(row, temp)) break;
     }
+
+    temp = col;
+    while (m_grid[row][temp].isShip())
+    {
+      if (m_grid[row][temp].hasBeenHit() == false)
+      {
+        return(false);
+      }
+
+      temp++;
+
+      if (!isOnGrid(row, temp)) break;
+    }
+
   }
 
   else
   {
-    for(int i = row; i < numRows; i++)
+    temp = col;
+    while (m_grid[temp][col].isShip())
     {
-      if(m_grid[i][col].getChar() == '^')
+      if (m_grid[temp][col].hasBeenHit() == false)
       {
-        return (Sunk);
+        return(false);
       }
-      if(m_grid[i][col].getChar() == '_')
+
+      temp--;
+
+      if (!isOnGrid(temp, col)) break;
+    }
+
+    temp = col;
+    while (m_grid[temp][col].isShip())
+    {
+      if (m_grid[temp][col].hasBeenHit() == false)
       {
-        if(m_grid[i-1][col].getChar() == '^')
-        {
-          return(Sunk);
-        }
-        else if(i-1 != 0)
-        {
-          return(isSunk(i-1, col));
-        }
-        else if(m_grid[i-1][col].getChar() == 'X')
-        {
-          m_shipsSunk++;
-          Sunk=true;
-          return(Sunk);
-        }
+        return(false);
       }
-      break;
+
+      temp++;
+
+      if (!isOnGrid(temp, col)) break;
     }
   }
-  return(Sunk);
+
+  return(true);
 }
+
 
 bool Board::checkWin()
 {

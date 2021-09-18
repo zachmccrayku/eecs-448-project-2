@@ -64,7 +64,7 @@ public:
   void placeShip();
 
   /*
-  *Marks the ship as hit
+  *Marks sends hit to this coordinate
   *@param None
   */
   bool hitShip();
