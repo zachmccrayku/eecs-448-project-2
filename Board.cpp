@@ -239,19 +239,48 @@ void Board::checkValidShipPlacement(int shipSize, bool horizontal)
 
     else
     {
+      if ( ((m_col > 0) && (m_grid[m_row][m_col-1].isShip())) || // check if no ships to left or right
+         (((m_col+shipSize) < numCols) && (m_grid[m_row][m_col+shipSize].isShip())) )
+      {
+        validInput = false;
+        invalidCoordMessage = "Cannot place ships adjacent to one another.";
+      }
+
       for (int j = 0; j < shipSize; j++)
       {
-        if (m_grid[m_row][m_col+j].isShip())
+        if (m_grid[m_row][m_col+j].isShip()) // if another ship takes up this space
         {
           validInput = false;
           invalidCoordMessage = "Ships overlap.";
           break;
         }
+
+        if (m_row > 0) // check no ships above
+        {
+          if (m_grid[m_row-1][m_col+j].isShip())
+          {
+            validInput = false;
+            invalidCoordMessage = "Cannot place ships adjacent to one another.";
+            break;
+          }
+        }
+
+        if (m_row < numRows-1) // check no ships below
+        {
+          if (m_grid[m_row+1][m_col+j].isShip())
+          {
+            validInput = false;
+            invalidCoordMessage = "Cannot place ships adjacent to one another.";
+            break;
+          }
+        }
+
       }
     }
+
   }
 
-  else if (horizontal)
+  else
   {
     if ((m_row + shipSize > numRows))
     {
@@ -261,14 +290,42 @@ void Board::checkValidShipPlacement(int shipSize, bool horizontal)
 
     else
     {
+      if ( ((m_row > 0) && (m_grid[m_row-1][m_col].isShip())) || // check if no ships on top or below
+         (((m_row+shipSize) < m_row) && (m_grid[m_row+shipSize][m_col].isShip())) )
+      {
+        validInput = false;
+        invalidCoordMessage = "Cannot place ships adjacent to one another.";
+      }
+
       for (int j = 0; j < shipSize; j++)
       {
-        if (m_grid[m_row+j][m_col].isShip())
+        if (m_grid[m_row+j][m_col].isShip()) // if another ship takes up this space
         {
           validInput = false;
           invalidCoordMessage = "Ships overlap.";
           break;
         }
+
+        if (m_col > 0) // check no ships left
+        {
+          if (m_grid[m_row+j][m_col-1].isShip())
+          {
+            validInput = false;
+            invalidCoordMessage = "Cannot place ships adjacent to one another.";
+            break;
+          }
+        }
+
+        if (m_col < numCols-1) // check no ships right
+        {
+          if (m_grid[m_row+j][m_col+1].isShip())
+          {
+            validInput = false;
+            invalidCoordMessage = "Cannot place ships adjacent to one another.";
+            break;
+          }
+        }
+
       }
     }
   }
