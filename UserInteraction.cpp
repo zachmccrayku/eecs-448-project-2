@@ -49,23 +49,26 @@ int UserInteraction::isInteger()
 
 void UserInteraction::playGame()
 {
+  //within the playGame we have the do loop which asks the player to input the number of ships in the game
+  //here if the number of ships is less than 1 or greater than 6 
+  //it returns an error telling the player to enter a number between 1 and 6
   do
   {
     cout << "Input the number of ships you wish to play with (1-6): ";
     numShips = isInteger();
 
-    if (numShips < 1 || numShips > 6)
+    if (numShips < 1 || numShips > 6) //if numShips <1 or >6 return error message prompting to enter correct value
     {
       cout << "ERROR: Enter a number between 1 and 6.\n\n";
     }
   } while(numShips < 1 || numShips > 6);
 
   system("clear");
-  cout << "Player 1 place your ships! [A-J][1-9]\n";
+  cout << "Player 1 place your ships! [A-J][1-9]\n"; //asks player 1 to place the ships
   player1->shipPlacement(numShips);
 
   system("clear");
-  cout << "Player 2 place your ships! [A-J][1-9]\n";
+  cout << "Player 2 place your ships! [A-J][1-9]\n"; //asks player 2 to place the ships
   player2->shipPlacement(numShips);
 
   while(1)
@@ -117,17 +120,17 @@ void UserInteraction::playGame()
       system("clear");
     }
 
-    if(choose == 2)
+    if(choose == 2) //if 2 then the players get to view their own board
     {
       p1Turn ? player1->viewBoard() : player2->viewBoard();
     }
 
-    if(choose == 3)
+    if(choose == 3) //if 3 then the players get to view their oppoent's board
     {
       p1Turn ? player2->viewOBoard() : player1->viewOBoard();
     }
 
-    if(choose == 4)
+    if(choose == 4) //if 4 then quits
     {
       cout << "Quitting...\n";
       break;
