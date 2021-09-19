@@ -14,7 +14,7 @@ After all ships have been placed, players will take turns attacking their oppone
   <li>Instructions for User: </li>
   <li>You have to use the makeFile to make the programs </li>
   <li>Use command "make"  to make the programs</li>
-  <li>Use command "./Battleship" to running the programs </li>
+  <li>Use command "./Battleship" to run the programs </li>
   <li>Use command "make clean" to clean the programs </li>
   </ul></small>
   
