@@ -74,7 +74,10 @@ void UserInteraction::playGame()
   while(1)
   {
     int choose;
-
+    //here in the do loop it gives the players all the options. 
+    //Either to attack opponent, view their own board, view their opponent's board (all the hits made), or to quit.
+    //Then it asks what the player wants to do.
+    //this loop runs until the entered value is not less than 1 or greater than 4.
     do
     {
       p1Turn ? cout << "Player 1's turn\n\n" : cout << "Player 2's turn\n\n";
@@ -85,14 +88,14 @@ void UserInteraction::playGame()
       cout << "What would you like to do: ";
       choose = isInteger();
 
-      if (choose < 1 || choose > 4)
+      if (choose < 1 || choose > 4) //if the entered value is less than 1 or greater than 4 then it gives an error to try again.
       {
         cout << "ERROR: Invalid menu option. Try again.\n\n";
       }
-    } while(choose < 1 || choose > 4);
+    } while(choose < 1 || choose > 4); //do loop runs while the entered value is not less than 1 or greater than 4.
 
 
-    if(choose == 1)
+    if(choose == 1) //if 1 then it fires at the opponent and also checks if player 1 or player 2 has lost based on the attack
     {
       if(p1Turn)
       {
