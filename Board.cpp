@@ -46,8 +46,8 @@ void Board::viewOBoard()
     for(int y = 0; y < numCols; y++)
     {
       if      (m_grid[x][y].getChar() == '^'){cout << "_ ";} // unhit ships are hidden
-      else if (m_grid[x][y].getChar() == '*'){cout << "X ";} // hit ship 'X'
-      else if (m_grid[x][y].getChar() == 'X'){cout << "O ";} // hit empty spot 'O'
+      else if (m_grid[x][y].getChar() == '*'){cout << "X ";} // hit ship '*' showing X
+      else if (m_grid[x][y].getChar() == 'X'){cout << "O ";} // hit empty spot 'X' showing'O'
       else if (m_grid[x][y].getChar() == '_'){cout << "_ ";} // empty spot
       ///////// we need to add logic and then character for sunken ship
       //////// we need to mark adjacent coordinates as "hit" since there cannot be a ship there
