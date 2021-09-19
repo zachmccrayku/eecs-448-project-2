@@ -30,19 +30,19 @@ void Board::viewBoard()
 
 
 void Board::viewOBoard()
-{
+{ string space= " ";
   cout << "Your attacks:\n";
   cout << "  A B C D E F G H I J " << endl;
-
   for(int x = 0; x < numRows; x++)
   {
     cout << x + 1 << " ";
 
     for(int y = 0; y < numCols; y++)
     {
-      if      (m_grid[x][y].getChar() == '^'){cout << "_ ";}
-      else if (m_grid[x][y].getChar() == '*'){cout << "X ";}
-      else    {cout << m_grid[x][y].getChar() << " ";}
+      if (m_grid[x][y].getChar() == '^'){cout << "_" + space ;}
+      else if (m_grid[x][y].getChar() == '*'){cout << "X"+space;}
+      else if (m_grid[x][y].getChar() == 'O') {cout << "O"+space;}
+      else if (m_grid[x][y].getChar() =='_') {cout << "_"+ space;}
     }
 
     cout << endl;
@@ -65,14 +65,7 @@ void Board::shipPlacement(int numShips)
       {
         cout << "Do you want to place your ship horizontal (H) or vertical (V)?: ";
         cin >> orientation;
-
-        if (orientation == 'h') orientation = 'H';
-        if (orientation == 'v') orientation = 'V';
-
-        if (orientation != 'H' && orientation != 'V')
-        {
-          cout << "Inavlid input. Try again.";
-        }
+        if (orientation != 'H' && orientation != 'V') cout << "Inavlid input. Try again.";
       } while (orientation != 'H' && orientation != 'V');
 
       if (orientation == 'V')
@@ -131,47 +124,48 @@ void Board::shipPlacement(int numShips)
 
 void Board::fireAt()
 {
-  bool validHit = false;
-  bool hitShip = false;
-
-  do {
-    convertCoord(); // this already checks for hit within bounds
-
+  bool validHit = true;
+ 
+  convertCoord(); // this already checks for hit within bounds
+  while(validHit) // After each shot, it is the other players turn.
+  {
     if (m_grid[m_row][m_col].hitShip()) // checks if spot has been previously hit
     {
-      validHit = true;
 
       if (m_grid[m_row][m_col].hasBeenHit() && m_grid[m_row][m_col].isShip()) // if spot hit contained a ship
       {
         m_grid[m_row][m_col].hitShip();
-        hitShip = true;
+        validHit = false;
         cout << "You hit an enemy ship!\n";
 
         if (isSunk(m_row, m_col))
         {
           cout << "You have sunk an enemy ship!\n";
+          validHit = false;
           m_shipsSunk++;
         }
 
         if (hasLost())
-        {
+        { 
+          validHit = false;
           cout << "You have sunk all of your enemy's ships!\n";
         }
       }
 
       else // if spot hit did not contain a ship
       {
-        hitShip = false;
+        validHit = false;
+        
         cout << "\nYou missed.\n";
       }
     }
 
     else
-    {
+    { 
       cout << "This spot has already bit hit. Try again.\n";
+      convertCoord();
     }
-
-  } while((!validHit || hitShip) && !hasLost()); // if player hits ship, player can shoot again
+  }
 
   cout << "\nPress Enter to Continue ";
   cin.ignore();
