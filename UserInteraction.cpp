@@ -142,7 +142,8 @@ void UserInteraction::playGame()
 void UserInteraction::run()
 {
   int choice;
-
+  //within the run, we have a do loop that welcomes the players and gives the menu to either start the game or quit
+  //the players can choose 1 or 2. If they enter any other value other than this it tells the player to enter the valid number.
   do {
     p1Turn = true;
     cout << "Hi! Welcome to Battleship!\n";
@@ -151,7 +152,7 @@ void UserInteraction::run()
     cout << "Option: ";
     choice = isInteger();
 
-    if (choice == 1)
+    if (choice == 1) //if 1 then the game starts
     {
       cout << "***************************\n";
       cout << "Game is starting...\n";
@@ -160,16 +161,16 @@ void UserInteraction::run()
       playGame();
     }
 
-    else if (choice == 2) // if quit
+    else if (choice == 2) // if 2 then quits the game
     {
       cout << "\nGoodbye!\n\n";
     }
 
-    if(choice<1 || choice>2)
+    if(choice<1 || choice>2) // if anything other than 1 or 2 it prompts the question again to enter valid input.
     {
       cout << "Please enter 1 to start a game or 2 to quit.\n"<< endl;
     }
 
-  } while (choice<1 || choice>2);
+  } while (choice<1 || choice>2); //do loop runs while the the entered value is not less than 1 or greater than 2.
 
 }
