@@ -30,19 +30,19 @@ void Board::viewBoard()
 
 
 void Board::viewOBoard()
-{
+{ string space= " ";
   cout << "Your attacks:\n";
   cout << "  A B C D E F G H I J " << endl;
-
   for(int x = 0; x < numRows; x++)
   {
     cout << x + 1 << " ";
 
     for(int y = 0; y < numCols; y++)
     {
-      if      (m_grid[x][y].getChar() == '^'){cout << "_ ";}
-      else if (m_grid[x][y].getChar() == '*'){cout << "X ";}
-      else    {cout << m_grid[x][y].getChar() << " ";}
+      if (m_grid[x][y].getChar() == '^'){cout << "_" + space ;}
+      else if (m_grid[x][y].getChar() == '*'){cout << "X"+space;}
+      else if (m_grid[x][y].getChar() == 'O') {cout << "O"+space;}
+      else if (m_grid[x][y].getChar() =='_') {cout << "_"+ space;}
     }
 
     cout << endl;
