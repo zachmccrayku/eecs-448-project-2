@@ -97,9 +97,9 @@ void UserInteraction::playGame()
 
       else
       {
-        player1->fireAt();
+        player2->fireAt();
 
-        if (player1->hasLost())
+        if (player2->hasLost())
         {
           cout << "\nPlayer 2 wins!!\n\n";
           break;
