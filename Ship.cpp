@@ -33,7 +33,8 @@ bool Ship::hitShip()
   if (m_isShip == false && m_hasBeenHit == false)
   {
     m_hasBeenHit = true;
-    m_char = 'O'; // hit empty coordinate
+    // m_char = 'O'; // hit empty coordinate
+    m_char = 'X'; // hit empty coordinate
     hitSpot = true;
   }
 
