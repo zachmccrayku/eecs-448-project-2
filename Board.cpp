@@ -1,3 +1,10 @@
+/**
+File Name: Board.cpp
+Authors: Regan Janssen, Andrew Loaiza, Chen Lu, Jui Nagarkar, Natasha Shirley
+Description: Defines the main functionality for the game 
+Date: Sept. 19, 2021
+*/
+
 #include "Board.h"
 
 Board::Board()

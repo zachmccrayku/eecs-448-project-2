@@ -1,3 +1,10 @@
+/**
+File Name: Board.cpp
+Authors: Regan Janssen, Andrew Loaiza, Chen Lu, Jui Nagarkar, Natasha Shirley
+Description: UserInteraction for main gameplay is defined in the UserInteraction class, acts as the executive class
+Date: Sept. 19, 2021
+*/
+
 #include "UserInteraction.h"
 
 UserInteraction::UserInteraction()

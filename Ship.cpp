@@ -1,3 +1,10 @@
+/**
+File Name: Board.cpp
+Authors: Regan Janssen, Andrew Loaiza, Chen Lu, Jui Nagarkar, Natasha Shirley
+Description: Defines the Ship class and sets the correct characters for the ship placement as well as checking if a ship has been hit
+Date: Sept. 19, 2021
+*/
+
 #include "Ship.h"
 
 Ship::Ship()
