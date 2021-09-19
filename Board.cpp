@@ -65,7 +65,14 @@ void Board::shipPlacement(int numShips)
       {
         cout << "Do you want to place your ship horizontal (H) or vertical (V)?: ";
         cin >> orientation;
-        if (orientation != 'H' && orientation != 'V') cout << "Inavlid input. Try again.";
+        if (orientation == 'h') orientation = 'H';
+        if (orientation == 'v') orientation = 'V';
+
+        if (orientation != 'H' && orientation != 'V')
+        {
+          cout << "Inavlid input. Try again.";
+        }
+
       } while (orientation != 'H' && orientation != 'V');
 
       if (orientation == 'V')
@@ -125,7 +132,7 @@ void Board::shipPlacement(int numShips)
 void Board::fireAt()
 {
   bool validHit = true;
- 
+
   convertCoord(); // this already checks for hit within bounds
   while(validHit) // After each shot, it is the other players turn.
   {
@@ -146,7 +153,7 @@ void Board::fireAt()
         }
 
         if (hasLost())
-        { 
+        {
           validHit = false;
           cout << "You have sunk all of your enemy's ships!\n";
         }
@@ -155,13 +162,13 @@ void Board::fireAt()
       else // if spot hit did not contain a ship
       {
         validHit = false;
-        
+
         cout << "\nYou missed.\n";
       }
     }
 
     else
-    { 
+    {
       cout << "This spot has already bit hit. Try again.\n";
       convertCoord();
     }
