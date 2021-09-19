@@ -65,7 +65,14 @@ void Board::shipPlacement(int numShips)
       {
         cout << "Do you want to place your ship horizontal (H) or vertical (V)?: ";
         cin >> orientation;
-        if (orientation != 'H' && orientation != 'V') cout << "Inavlid input. Try again.";
+
+        if (orientation == 'h') orientation = 'H';
+        if (orientation == 'v') orientation = 'V';
+
+        if (orientation != 'H' && orientation != 'V')
+        {
+          cout << "Inavlid input. Try again.";
+        }
       } while (orientation != 'H' && orientation != 'V');
 
       if (orientation == 'V')
