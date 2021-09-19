@@ -11,10 +11,11 @@ After all ships have been placed, players will take turns attacking their oppone
   <li>Documentation: This folder contains the proper HTML Documentation as well as a works cited page</li>
   <li>TeamInfo: This folder contains the team's contract, notes, and the time logging for the project</li>
   <li>Code Files: The remaining files are split up by classes and a brief description of each file can be seen when it is opened</li>
-  <li>Instructions for User: </li>
-  <li>You have to use the makeFile to make the programs </li>
-  <li>Use command "make"  to make the programs</li>
-  <li>Use command "./Battleship" to run the programs </li>
-  <li>Use command "make clean" to clean the programs </li>
+  <h3>Instructions for User: </h3>
+  <small><ul>
+  <li>A makefile must be used to make the program</li>
+  <li>Use command "make" to make the program</li>
+  <li>Use command "./Battleship" to run the program </li>
+  <li>Use command "make clean" to clean the program</li>
   </ul></small>
   
