@@ -1,0 +1,163 @@
+# Time Accounting
+
+An hour-by-hour (per-person) breakdown of time spent on this project.
+
+<table>
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Task</th>
+            <th>Max</th>
+            <th>Nathan</th>
+            <th>Austin</th>
+            <th>Sebastian</th>
+            <th>Zach</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th rowspan=4>Planning</th>
+            <td>Team meetings</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+        <tr>
+            <th rowspan=8>Implementation</th>
+            <td></td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+        <tr>
+            <th rowspan=2>Integration</th>
+            <td></td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+        <tr>
+            <th rowspan=2>Testing and Maintenance</th>
+            <td></td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+        <tr>
+            <th colspan=2>
+
+Total
+
+</th>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+            <td>0h</td>
+        </tr>
+    </tbody>
+</table>
