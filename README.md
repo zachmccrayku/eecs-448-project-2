@@ -1,4 +1,4 @@
-# Project 1: Battleship
+# Project 2: Battleship
 
 ## Group 5 - EECS 448
 
@@ -36,6 +36,9 @@ and the program stops running.
 A makefile must be used to make the program.
 
 ```zsh
+# Navigate to the source directory
+cd eecs-448-project-1
+
 # Build the program
 make
 
