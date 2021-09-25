@@ -1,15 +1,8 @@
-/**
-File Name: Board.cpp
-Authors: Regan Janssen, Andrew Loaiza, Chen Lu, Jui Nagarkar, Natasha Shirley
-Description: Defines the Ship class and sets the correct characters for the ship placement as well as checking if a ship has been hit
-Date: Sept. 19, 2021
-*/
-
 #include "Ship.h"
 
 Ship::Ship()
 {
-  m_char = '_'; // no hits or ships
+  m_char = ' ';
   m_isShip = false;
   m_hasBeenHit = false;
   m_isHorizontal = true;
@@ -22,7 +15,7 @@ void Ship::placeShip()
   if (m_isShip == false)
   {
     m_isShip = true;
-    m_char = '^'; // ship placed
+    m_char = '#';
   }
 }
 
@@ -30,23 +23,24 @@ bool Ship::hitShip()
 {
   bool hitSpot = false;
 
+  // Hit
   if(m_isShip == true && m_hasBeenHit == false)
   {
     m_hasBeenHit = true;
-    m_char = '*'; // your ship has been hit
+    m_char = '*';
     hitSpot = true;
   }
 
+  // Missed
   if (m_isShip == false && m_hasBeenHit == false)
   {
     m_hasBeenHit = true;
-    // m_char = 'O'; // hit empty coordinate
-    m_char = 'X'; // hit empty coordinate
+    m_char = '.';
     hitSpot = true;
   }
 
   // if spot has already been hit, return false (they must redo attempt)
-  return(hitSpot);
+  return hitSpot;
 }
 
 void Ship::setOrientation(bool isHorizontal)
