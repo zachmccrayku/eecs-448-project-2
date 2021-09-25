@@ -1,10 +1,3 @@
-/**
-File Name: Board.cpp
-Authors: Regan Janssen, Andrew Loaiza, Chen Lu, Jui Nagarkar, Natasha Shirley
-Description: Defines the main functionality for the game 
-Date: Sept. 19, 2021
-*/
-
 #include "Board.h"
 
 Board::Board()
@@ -19,17 +12,16 @@ Board::~Board(){}
 
 void Board::viewBoard()
 {
-  cout << "Your board:\n";
-  cout << "  A B C D E F G H I J " << endl;
+  cout
+    << "Your board:\n"
+    << "  A B C D E F G H I J\n";
 
   for(int x = 0; x < numRows; x++)
   {
     cout << x + 1 << " ";
 
     for(int y = 0; y < numCols; y++)
-    {
       cout << m_grid[x][y].getChar() << " ";
-    }
 
     cout << endl;
   }
@@ -37,20 +29,31 @@ void Board::viewBoard()
 
 void Board::viewOBoard()
 {
-  cout << "Your attacks:\n";
-  cout << "  A B C D E F G H I J " << endl;
+  cout
+    << "Your attacks:\n"
+    << "  A B C D E F G H I J\n";
+
   for(int x = 0; x < numRows; x++)
   {
     cout << x + 1 << " ";
 
     for(int y = 0; y < numCols; y++)
     {
-      if      (m_grid[x][y].getChar() == '^'){cout << "_ ";} // unhit ships are hidden
-      else if (m_grid[x][y].getChar() == '*'){cout << "X ";} // hit ship '*' showing X
-      else if (m_grid[x][y].getChar() == 'X'){cout << "O ";} // hit empty spot 'X' showing'O'
-      else if (m_grid[x][y].getChar() == '_'){cout << "_ ";} // empty spot
-      ///////// we need to add logic and then character for sunken ship
-      //////// we need to mark adjacent coordinates as "hit" since there cannot be a ship there
+      if(m_grid[x][y].getChar() == '#')
+        // UnHit ships are hidden
+        cout << " ";
+      else if(m_grid[x][y].getChar() == '*')
+        // Hit ship '*' showing X
+        cout << "X";
+      else if(m_grid[x][y].getChar() == 'X')
+        // Hit empty spot 'X' showing O
+        cout << "O";
+      else if(m_grid[x][y].getChar() == '_')
+        // Empty spot
+        cout << " ";
+
+      cout << " ";
+
     }
     cout << endl;
   }
@@ -64,72 +67,57 @@ void Board::shipPlacement(int numShips)
   char orientation;
   for (int i = 1; i <= m_numShips; i++)
   {
-    viewBoard(); // show player their current board with ship placements
+    // Show player their current board with ship placements
+    viewBoard();
+
     // choose horizontal or vertical ship placement
     if (i != 1)
     {
       do
       {
-        cout << "Do you want to place your ship horizontal (H) or vertical (V)?: ";
+        cout << "Place ship horizontally (H) or vertically (V)? ";
         cin >> orientation;
         if (orientation == 'h') orientation = 'H';
         if (orientation == 'v') orientation = 'V';
 
         if (orientation != 'H' && orientation != 'V')
-        {
-          cout << "Inavlid input. Try again.";
-        }
+          cout << "Invalid input. Try again.";
 
       } while (orientation != 'H' && orientation != 'V');
 
-      if (orientation == 'V')
-      {
-        isHorizontal = false;
-      }
+      isHorizontal = orientation == 'H';
     }
 
     do {
-      validInput = false;
-
-      // cout statement asking for coordinate
       cout << "Choose the starting ";
-      if (i != 1) isHorizontal ? cout << "leftmost " : cout << "topmost ";
+      if(i != 1) isHorizontal ? cout << "leftmost " : cout << "topmost ";
       cout << "coordinate where you would like to place your ";
       isHorizontal ? cout << "1 x " << i : cout << i << " x 1";
       cout << " ship.\n";
 
-      // obtain row and column from user
-      convertCoord();
+      promptForCoordinate();
 
-      // check if shiip can be placed here
-      checkValidShipPlacement(i, isHorizontal);
-
-    } while(validInput == false);
+    } while(!checkValidShipPlacement(i, isHorizontal));
 
     if (isHorizontal)
-    {
       for (int j = 0; j < i; j++)
       {
         m_grid[m_row][m_col+j].placeShip();
         m_grid[m_row][m_col+j].setOrientation(isHorizontal);
       }
-    }
-
     else
-    {
       for (int j = 0; j < i; j++)
       {
         m_grid[m_row+j][m_col].placeShip();
         m_grid[m_row+j][m_col].setOrientation(isHorizontal);
       }
-    }
 
     system("clear");
-  } // loop to next iteration
+  }
 
   cout << "Here is your final ship placement:\n";
   viewBoard();
-  cout << "\nPress Enter to Continue ";
+  cout << "\nPress ENTER to Continue ";
   cin.ignore();
   cin.ignore();
   system("clear");
@@ -140,13 +128,16 @@ void Board::fireAt()
 {
   bool invalidHit = true;
 
-  while(invalidHit) // After each shot, it is the other players turn.
+  // Change who's turn it is after each hit
+  while(invalidHit)
   {
-    convertCoord(); // ask user for coordinate to hit
+    promptForCoordinate();
 
-    if (m_grid[m_row][m_col].hitShip()) // checks if spot has been previously hit
+    // Check if spot has been previously hit
+    if (m_grid[m_row][m_col].hitShip())
     {
-      if (m_grid[m_row][m_col].hasBeenHit() && m_grid[m_row][m_col].isShip()) // if spot hit contained a ship
+      // If spot hit contained a ship
+      if (m_grid[m_row][m_col].hasBeenHit() && m_grid[m_row][m_col].isShip())
       {
         m_grid[m_row][m_col].hitShip();
         invalidHit = false;
@@ -159,9 +150,7 @@ void Board::fireAt()
         }
 
         if (hasLost())
-        {
           cout << "You have sunk all of your enemy's ships!\n";
-        }
       }
 
       else // if spot hit did not contain a ship
@@ -172,18 +161,16 @@ void Board::fireAt()
     }
 
     else
-    {
       cout << "This spot has already bit hit. Try again.\n";
-    }
 
   }
 
-  cout << "\nPress Enter to Continue ";
+  cout << "\nPress ENTER to Continue ";
   cin.ignore();
   cin.ignore();
 }
 
-void Board::convertCoord()
+void Board::promptForCoordinate()
 {
   validInput = false;
 
@@ -197,19 +184,19 @@ void Board::convertCoord()
       m_col = int(userInput.at(0));
       m_row = int(userInput.at(1));
 
-      // row number
+      // Row number
       if (m_row >= 49 && m_row <=57)
       {
         m_row = m_row - 49;
 
-        // column letter, uppercase
+        // Column letter, uppercase
         if (m_col >= 65 && m_col <= 74)
         {
           m_col = m_col - 65;
           validInput = true;
         }
 
-        // column letter, lowercase
+        // Column letter, lowercase
         else if (m_col >= 97 && m_col <= 106)
         {
           m_col = m_col - 97;
@@ -227,7 +214,7 @@ void Board::convertCoord()
 }
 
 
-void Board::checkValidShipPlacement(int shipSize, bool horizontal)
+bool Board::checkValidShipPlacement(int shipSize, bool horizontal)
 {
   validInput = true;
 
@@ -241,8 +228,16 @@ void Board::checkValidShipPlacement(int shipSize, bool horizontal)
 
     else
     {
-      if ( ((m_col > 0) && (m_grid[m_row][m_col-1].isShip())) || // check if no ships to left or right
-         (((m_col+shipSize) < numCols) && (m_grid[m_row][m_col+shipSize].isShip())) )
+      if (
+        (
+          m_col > 0
+          && m_grid[m_row][m_col-1].isShip()
+        )
+        || ( // Check if no ships to left or right
+         m_col+shipSize < numCols
+         && m_grid[m_row][m_col+shipSize].isShip()
+        )
+      )
       {
         validInput = false;
         invalidCoordMessage = "Cannot place ships adjacent to one another.";
@@ -250,14 +245,16 @@ void Board::checkValidShipPlacement(int shipSize, bool horizontal)
 
       for (int j = 0; j < shipSize; j++)
       {
-        if (m_grid[m_row][m_col+j].isShip()) // if another ship takes up this space
+        // If another ship takes up this space
+        if (m_grid[m_row][m_col+j].isShip())
         {
           validInput = false;
           invalidCoordMessage = "Ships overlap.";
           break;
         }
 
-        if (m_row > 0) // check no ships above
+        // Check no ships above
+        if (m_row > 0)
         {
           if (m_grid[m_row-1][m_col+j].isShip())
           {
@@ -267,7 +264,8 @@ void Board::checkValidShipPlacement(int shipSize, bool horizontal)
           }
         }
 
-        if (m_row < numRows-1) // check no ships below
+        // Check no ships below
+        if (m_row < numRows-1)
         {
           if (m_grid[m_row+1][m_col+j].isShip())
           {
@@ -292,8 +290,16 @@ void Board::checkValidShipPlacement(int shipSize, bool horizontal)
 
     else
     {
-      if ( ((m_row > 0) && (m_grid[m_row-1][m_col].isShip())) || // check if no ships on top or below
-         (((m_row+shipSize) < m_row) && (m_grid[m_row+shipSize][m_col].isShip())) )
+      if (
+        (
+          m_row > 0
+          && m_grid[m_row-1][m_col].isShip()
+        )
+        || ( // check if no ships on top or below
+          m_row+shipSize < m_row
+          && m_grid[m_row+shipSize][m_col].isShip()
+        )
+      )
       {
         validInput = false;
         invalidCoordMessage = "Cannot place ships adjacent to one another.";
@@ -301,14 +307,16 @@ void Board::checkValidShipPlacement(int shipSize, bool horizontal)
 
       for (int j = 0; j < shipSize; j++)
       {
-        if (m_grid[m_row+j][m_col].isShip()) // if another ship takes up this space
+        // If another ship takes up this space
+        if (m_grid[m_row+j][m_col].isShip())
         {
           validInput = false;
           invalidCoordMessage = "Ships overlap.";
           break;
         }
 
-        if (m_col > 0) // check no ships left
+        // Check no ships left
+        if (m_col > 0)
         {
           if (m_grid[m_row+j][m_col-1].isShip())
           {
@@ -318,7 +326,8 @@ void Board::checkValidShipPlacement(int shipSize, bool horizontal)
           }
         }
 
-        if (m_col < numCols-1) // check no ships right
+        // Check no ships right
+        if (m_col < numCols-1)
         {
           if (m_grid[m_row+j][m_col+1].isShip())
           {
@@ -337,19 +346,18 @@ void Board::checkValidShipPlacement(int shipSize, bool horizontal)
     cout << "ERROR: " << invalidCoordMessage << "\n\n";
   }
 
+  return validInput;
+
 }
 
 bool Board::isOnGrid(int row, int col)
 {
-  if (row >= 0 && row < numRows)
-  {
-    if (col >= 0 && col < numCols)
-    {
-      return(true);
-    }
-  }
-
-  return(false);
+  return (
+    row >= 0
+    && row < numRows
+    && col >= 0
+    && col < numCols
+  );
 }
 
 bool Board::isSunk(int row, int col)
@@ -362,26 +370,24 @@ bool Board::isSunk(int row, int col)
     while (m_grid[row][temp].isShip())
     {
       if (m_grid[row][temp].hasBeenHit() == false)
-      {
-        return(false);
-      }
+        return false;
 
       temp--;
 
-      if (!isOnGrid(row, temp)) break;
+      if (!isOnGrid(row, temp))
+        break;
     }
 
     temp = col;
     while (m_grid[row][temp].isShip())
     {
       if (m_grid[row][temp].hasBeenHit() == false)
-      {
-        return(false);
-      }
+        return false;
 
       temp++;
 
-      if (!isOnGrid(row, temp)) break;
+      if (!isOnGrid(row, temp))
+        break;
     }
 
   }
@@ -392,34 +398,32 @@ bool Board::isSunk(int row, int col)
     while (m_grid[temp][col].isShip())
     {
       if (m_grid[temp][col].hasBeenHit() == false)
-      {
-        return(false);
-      }
+        return false;
 
       temp--;
 
-      if (!isOnGrid(temp, col)) break;
+      if (!isOnGrid(temp, col))
+        break;
     }
 
     temp = row;
     while (m_grid[temp][col].isShip())
     {
       if (m_grid[temp][col].hasBeenHit() == false)
-      {
-        return(false);
-      }
+        return false;
 
       temp++;
 
-      if (!isOnGrid(temp, col)) break;
+      if (!isOnGrid(temp, col))
+        break;
     }
   }
 
-  return(true);
+  return true;
 }
 
 
 bool Board::hasLost()
 {
-  return(m_shipsSunk == m_numShips);
+  return m_shipsSunk == m_numShips;
 }
