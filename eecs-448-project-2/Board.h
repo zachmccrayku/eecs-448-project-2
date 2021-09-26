@@ -6,8 +6,8 @@
 #include <stdlib.h>
 #include "Ship.h"
 
-#define ROWS 9;
-#define COLS 10;
+#define ROWS 9
+#define COLS 10
 
 #define HORIZONTAL 'H'
 #define VERTICAL 'V'

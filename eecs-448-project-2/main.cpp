@@ -5,5 +5,5 @@ int main()
   UserInteraction letsPlay;
   letsPlay.run();
 
-  return(0);
+  return 0;
 }

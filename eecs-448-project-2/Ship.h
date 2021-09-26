@@ -2,13 +2,19 @@
 #define SHIP_H
 
 #include <iostream>
+
 using namespace std;
+
+#define BLANK ' '
+#define MISS '.'
+#define SHIP '#'
+#define HIT '*'
 
 class Ship
 {
 private:
   /*
-   * Changes to " " when it is placed, changes to X when it is hit
+   * Changes to BLANK when it is placed, changes to HIT when it is hit
    * @param None
    * @returns character value based on hit or placement
    */
@@ -38,7 +44,7 @@ private:
 
 public:
   /*
-   * Sets m_ship, m_hasBeenHit to false, m_isHorizontal to true, gridChar to '.'
+   * Sets m_ship, m_hasBeenHit to false, m_isHorizontal to true, gridChar to MISS
    * @param None
    */
   Ship();

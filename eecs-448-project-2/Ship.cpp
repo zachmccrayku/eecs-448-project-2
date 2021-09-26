@@ -2,7 +2,7 @@
 
 Ship::Ship()
 {
-  m_char = ' ';
+  m_char = BLANK;
   m_isShip = false;
   m_hasBeenHit = false;
   m_isHorizontal = true;
@@ -15,7 +15,7 @@ void Ship::placeShip()
   if (m_isShip == false)
   {
     m_isShip = true;
-    m_char = '#';
+    m_char = SHIP;
   }
 }
 
@@ -27,7 +27,7 @@ bool Ship::hitShip()
   if(m_isShip == true && m_hasBeenHit == false)
   {
     m_hasBeenHit = true;
-    m_char = '*';
+    m_char = HIT;
     hitSpot = true;
   }
 
@@ -35,7 +35,7 @@ bool Ship::hitShip()
   if (m_isShip == false && m_hasBeenHit == false)
   {
     m_hasBeenHit = true;
-    m_char = '.';
+    m_char = MISS;
     hitSpot = true;
   }
 
@@ -50,20 +50,20 @@ void Ship::setOrientation(bool isHorizontal)
 
 bool Ship::isHorizontal()
 {
-  return(m_isHorizontal);
+  return m_isHorizontal;
 }
 
 char Ship::getChar()
 {
-  return(m_char);
+  return m_char;
 }
 
 bool Ship::hasBeenHit()
 {
-  return(m_hasBeenHit);
+  return m_hasBeenHit;
 }
 
 bool Ship::isShip()
 {
-  return(m_isShip);
+  return m_isShip;
 }
