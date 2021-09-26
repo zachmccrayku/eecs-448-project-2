@@ -14,12 +14,12 @@ Board::~Board(){}
 void Board::viewBoard(bool asOpponent)
 {
   cout
-    << "Your board:\n"
-    << "  A B C D E F G H I J\n";
+    << "------------------------\n"
+    << "|  A B C D E F G H I J |\n";
 
   for(int x = 0; x < ROWS; x++)
   {
-    cout << x + 1 << ' ';
+    cout << '|' << x + 1 << ' ';
 
     for(int y = 0; y < COLS; y++){
       if(asOpponent && m_grid[x][y].getChar() == SHIP)
@@ -30,8 +30,9 @@ void Board::viewBoard(bool asOpponent)
       cout << ' ';
     }
 
-    cout << endl;
+    cout << "|\n";
   }
+  cout << "------------------------\n";
 }
 
 void Board::shipPlacement(int numShips)

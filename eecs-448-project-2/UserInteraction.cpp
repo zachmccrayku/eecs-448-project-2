@@ -49,7 +49,7 @@ void UserInteraction::playGame()
   player1->shipPlacement(numShips);
 
   system("clear");
-  cout << "Play against human (0) or AI (1)? ";
+  cout << "Play against human (0) or AI (1)?\n";
   hasAi = promptForInt(0,1) == 1;
 
   system("clear");
@@ -58,7 +58,7 @@ void UserInteraction::playGame()
       << "Choose your artificial opponent:\n"
       << "1. Donkey Kong\n"
       << "2. IBM Deep Blue\n"
-      << "3. Tesla Dojo\b";
+      << "3. Tesla Dojo\n";
     aiDifficulty = promptForInt(1,3);
     player2->randomShipPlacement(numShips);
   }
@@ -67,70 +67,41 @@ void UserInteraction::playGame()
     player2->shipPlacement(numShips);
   }
 
-  bool gameOver = false;
-  while(!gameOver)
+  p1Turn = true;
+  Board *player=player1;
+  Board *opponent=player2;
+  int currentPlayer=1;
+  int opponentPlayer=2;
+  for(; !opponent->hasLost(); p1Turn = !p1Turn)
   {
 
+    currentPlayer = p1Turn ? 1 : 2;
+    opponentPlayer = p1Turn ? 2 : 1;
+    player = p1Turn ? player1 : player2;
+    opponent = p1Turn ? player2 : player1;
+
+    system("clear");
     cout
-     << "Player " << (p1Turn ? 1 : 2) << "'s turn\n\n"
-     << "1. Attack opponent\n"
-     << "2. View my board\n"
-     << "3. View my attacks on the opponent\n"
-     << "0. Quit\n";
+      << "Player " << currentPlayer << "'s turn\n\n"
+      << "\nYour Board:\n";
 
-    switch(promptForInt(0,4)){
-      case 1:
-        if(p1Turn)
-        {
-          player2->fireAt();
+    player->viewBoard(false);
 
-          if (player2->hasLost())
-          {
-            cout << "\nPlayer 1 wins!!\n\n";
-            gameOver = true;
-          }
-        }
+    cout << "\nOpponent's board:\n";
+    opponent->viewBoard(true);
 
-        else
-        {
-          player1->fireAt();
-
-          if (player1->hasLost())
-          {
-            cout << "\nPlayer 2 wins!!\n\n";
-            gameOver = true;
-          }
-        }
-
-        p1Turn = !p1Turn;
-        system("clear");
-        break;
-      case 2:
-        if(p1Turn)
-          player1->viewBoard(false);
-        else
-          player2->viewBoard(false);
-        break;
-      case 3:
-        if(p1Turn)
-          player2->viewBoard(true);
-        else
-          player1->viewBoard(true);
-        break;
-      case 0:
-        gameOver = true;
-        break;
-    }
+    cout << "\nWhere do you wish to fire?\n";
+    opponent->fireAt();
 
   }
 
+  cout << "\nPlayer " << opponentPlayer << " wins!\n\n";
 }
 
 
 void UserInteraction::run()
 {
 
-  p1Turn = true;
   cout
     << "Welcome to Battleship!\n"
     << "1. Start\n"
