@@ -27,7 +27,7 @@ private:
   bool hasAi;
 
   // AI difficulty (between 1 and 3)
-  bool aiDifficulty;
+  int aiDifficulty;
 
 public:
   /*

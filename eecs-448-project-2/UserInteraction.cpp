@@ -32,7 +32,9 @@ int UserInteraction::promptForInt(int min, int max)
       cout << "ERROR: Your input did not seem to be a number. Try again.";
 
     else if(input < min || input > max)
-      cout << "ERROR: Please enter a number in range from " << min << " to " <<  max << ".\n";
+      cout <<
+        "ERROR: Please enter a number in range from "
+        << min << " to " <<  max << ".\n";
 
     else
       return input;
@@ -80,28 +82,41 @@ void UserInteraction::playGame()
     player = p1Turn ? player1 : player2;
     opponent = p1Turn ? player2 : player1;
 
-    system("clear");
-    cout
-      << "Player " << currentPlayer << "'s turn\n\n"
-      << "\nYour Board:\n";
+    if(hasAi && currentPlayer == 2)
+      opponent->firedAtByAi(aiDifficulty);
+    else {
+      system("clear");
+      cout
+        << "Player " << currentPlayer << "'s turn\n\n"
+        << "\nYour Board:\n";
 
-    player->viewBoard(false);
+      player->viewBoard(false);
 
-    cout << "\nOpponent's board:\n";
-    opponent->viewBoard(true);
+      cout << "\nOpponent's board:\n";
+      opponent->viewBoard(true);
 
-    cout << "\nWhere do you wish to fire?\n";
-    opponent->fireAt();
+      cout << "\nWhere do you wish to fire?\n";
+      opponent->fireAt();
+
+      cin.ignore();
+    }
+
+    cout << "\nPress ENTER to Continue ";
+    cin.ignore();
 
   }
 
-  cout << "\nPlayer " << opponentPlayer << " wins!\n\n";
+  if(hasAi && currentPlayer == 2)
+    cout << "AI Wins! Pesky humans die in fear\n\n";
+  else
+    cout << "\nPlayer " << currentPlayer << " wins!\n\n";
 }
 
 
 void UserInteraction::run()
 {
 
+  system("clear");
   cout
     << "Welcome to Battleship!\n"
     << "1. Start\n"

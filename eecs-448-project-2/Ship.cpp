@@ -21,26 +21,12 @@ void Ship::placeShip()
 
 bool Ship::hitShip()
 {
-  bool hitSpot = false;
+  if(m_hasBeenHit)
+    return false;
 
-  // Hit
-  if(m_isShip == true && m_hasBeenHit == false)
-  {
-    m_hasBeenHit = true;
-    m_char = HIT;
-    hitSpot = true;
-  }
-
-  // Missed
-  if (m_isShip == false && m_hasBeenHit == false)
-  {
-    m_hasBeenHit = true;
-    m_char = MISS;
-    hitSpot = true;
-  }
-
-  // if spot has already been hit, return false (they must redo attempt)
-  return hitSpot;
+  m_hasBeenHit = true;
+  m_char = m_isShip ? HIT : MISS;
+  return true;
 }
 
 void Ship::setOrientation(bool isHorizontal)

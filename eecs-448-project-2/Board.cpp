@@ -135,48 +135,68 @@ void Board::randomShipPlacement(int numShips){
 
 void Board::fireAt()
 {
-  bool invalidHit = true;
-
-  // Change who's turn it is after each hit
-  while(invalidHit)
+  while(true)
   {
     promptForCoordinate();
 
-    // Check if spot has been previously hit
     if (m_grid[m_row][m_col].hitShip())
-    {
-      // Check if it contains a ship
-      if (m_grid[m_row][m_col].hasBeenHit() && m_grid[m_row][m_col].isShip())
-      {
-        m_grid[m_row][m_col].hitShip();
-        invalidHit = false;
-        cout << "You hit an enemy ship!\n";
+      break;
 
-        if (isSunk(m_row, m_col))
-        {
-          cout << "You have sunk an enemy ship!\n";
-          m_shipsSunk++;
-        }
-
-        if (hasLost())
-          cout << "You have sunk all of your enemy's ships!\n";
-      }
-
-      else // if spot hit did not contain a ship
-      {
-        invalidHit = false;
-        cout << "\nYou missed.\n";
-      }
-    }
-
-    else
-      cout << "This spot has already bit hit. Try again.\n";
-
+    cout << "This spot has already bit hit. Try again.\n";
   }
 
-  cout << "\nPress ENTER to Continue ";
-  cin.ignore();
-  cin.ignore();
+  if (m_grid[m_row][m_col].isShip())
+  {
+    cout << "You hit an enemy ship!\n";
+
+    if (isSunk(m_row, m_col))
+    {
+      cout << "You have sunk an enemy ship!\n";
+      m_shipsSunk++;
+    }
+
+    if (hasLost())
+      cout << "You have sunk all of your enemy's ships!\n";
+  }
+  else
+    cout << "\nYou missed.\n";
+
+}
+
+void Board::firedAtByAi(int difficulty)
+{
+  if(difficulty == EASY)
+    do {
+      m_row=rand()%ROWS;
+      m_col=rand()%COLS;
+    } while(m_grid[m_row][m_col].hasBeenHit());
+  else if(difficulty == MEDIUM){
+    // TODO: implement medium difficulty
+
+  }
+  else if(difficulty == HARD)
+    for(m_row=0; m_row<ROWS; m_row++)
+      for(m_col=0; m_col<COLS; m_col++)
+        if(m_grid[m_row][m_col].getChar() == SHIP)
+          goto selected;
+            selected:
+
+  m_grid[m_row][m_col].hitShip();
+
+  if(m_grid[m_row][m_col].getChar() == HIT)
+    cout << "AI hit your ship!\n";
+  else
+    cout << "AI missed your ships!\n";
+
+  if (isSunk(m_row, m_col))
+  {
+    cout << "AI sunk your ship!\n";
+    m_shipsSunk++;
+  }
+
+  if (hasLost())
+    cout << "Oh no, AI sunk all of your ships!!!\n";
+
 }
 
 void Board::promptForCoordinate()
@@ -372,6 +392,9 @@ bool Board::isOnGrid(int row, int col)
 bool Board::isSunk(int row, int col)
 {
   int temp;
+
+  if(!m_grid[m_row][m_col].isShip())
+    return false;
 
   if(m_grid[row][col].isHorizontal() == true)
   {

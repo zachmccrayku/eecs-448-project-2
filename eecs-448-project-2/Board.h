@@ -12,6 +12,10 @@
 #define HORIZONTAL 'H'
 #define VERTICAL 'V'
 
+#define EASY 1
+#define MEDIUM 2
+#define HARD 3
+
 using namespace std;
 
 class Board
@@ -98,6 +102,13 @@ public:
    * @returns none
    */
   void fireAt();
+
+  /*
+   * Board is being shot at by an AI
+   * @param None
+   * @returns none
+   */
+  void firedAtByAi(int difficulty);
 
   bool isOnGrid(int row, int col);
 
