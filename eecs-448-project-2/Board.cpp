@@ -123,6 +123,40 @@ void Board::shipPlacement(int numShips)
   system("clear");
 }
 
+void Board::randomShipPlacement(int numShips){
+  m_numShips = numShips;
+  for(int shipSize=numShips; shipSize>=1; shipSize--)
+    while(true){
+      m_row = rand() % ROWS;
+      m_col = rand() % COLS;
+
+      bool validHorizontally = checkValidShipPlacement(shipSize, true);
+      bool validVertically = checkValidShipPlacement(shipSize, false);
+
+      if(!validHorizontally && !validVertically)
+        continue;
+
+      char orientation = validHorizontally ? HORIZONTAL : VERTICAL;
+      if(validHorizontally && validHorizontally && rand() % 2)
+        orientation == VERTICAL;
+
+      if (orientation == HORIZONTAL)
+        for (int j = 0; j < shipSize; j++)
+        {
+          m_grid[m_row][m_col+j].placeShip();
+          m_grid[m_row][m_col+j].setOrientation(true);
+        }
+      else
+        for (int j = 0; j < shipSize; j++)
+        {
+          m_grid[m_row+j][m_col].placeShip();
+          m_grid[m_row+j][m_col].setOrientation(false);
+        }
+
+      break;
+    }
+}
+
 
 void Board::fireAt()
 {

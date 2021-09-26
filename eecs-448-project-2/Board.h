@@ -3,21 +3,22 @@
 
 #include <cstdlib>
 #include <limits>
+#include <stdlib.h>
 #include "Ship.h"
+
+#define ROWS 9;
+#define COLS 10;
+
+#define HORIZONTAL 'H'
+#define VERTICAL 'V'
 
 using namespace std;
 
 class Board
 {
 private:
-  // Sets the number of rows for the board
-  int numRows = 9;
-
-  // Sets the number of columns for the board
-  int numCols = 10;
-
   // 2D array of type Ship
-  Ship m_grid[9][10];
+  Ship m_grid[ROWS][COLS];
 
   // Current row location
   int m_row;
@@ -77,6 +78,13 @@ public:
    * @return none
    */
   void shipPlacement(int numShips);
+
+  /*
+   * Randomly place ships on the board
+   * @param number of ships
+   * @return none
+   */
+  void randomShipPlacement(int numShips);
 
   /*
    * Converts string input to int, checks for out of bounds
