@@ -46,12 +46,27 @@ void UserInteraction::playGame()
   numShips = promptForInt(1, 6);
 
   system("clear");
+  cout << "Play against human (0) or AI (1)?";
+  hasAi = promptForInt(0,1) == 1;
+
+  system("clear");
   cout << "Player 1 place your ships! [A-J][1-9]\n";
   player1->shipPlacement(numShips);
 
   system("clear");
-  cout << "Player 2 place your ships! [A-J][1-9]\n";
-  player2->shipPlacement(numShips);
+  if(hasAi){
+    cout
+      << "Choose your artificial opponent:\n"
+      << "1. Donkey Kong\n"
+      << "2. IBM Deep Blue\n"
+      << "3. Tesla Dojo\b";
+    aiDifficulty = promptForInt(1,3);
+    player2->randomShipPlacement(numShips);
+  }
+  else {
+    cout << "Player 2 place your ships! [A-J][1-9]\n";
+    player2->shipPlacement(numShips);
+  }
 
   bool gameOver = false;
   while(!gameOver)

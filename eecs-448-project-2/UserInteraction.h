@@ -20,7 +20,14 @@ private:
   // Is given by user and sets up the number of ships for placement
   int numShips;
 
+  // Whether it is first player's turn
   bool p1Turn;
+
+  // Whether second player is an AI
+  bool hasAi;
+
+  // AI difficulty (between 1 and 3)
+  bool aiDifficulty;
 
 public:
   /*
