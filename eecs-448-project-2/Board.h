@@ -59,18 +59,10 @@ public:
   /*
    * Allows players to view their board as well as the opponents board with
    * their hits and misses
-   * @param None
+   * @param asOpponent whether to view as opponent
    * @return none
    */
-  void viewBoard();
-
-  /*
-   * Allows players to view other player's board as well as the opponents board
-   * with their hits and misses
-   * @param None
-   * @return none
-   */
-  void viewOBoard();
+  void viewBoard(bool asOpponent);
 
   /*
    * Ship is placed on the board

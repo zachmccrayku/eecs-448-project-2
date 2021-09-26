@@ -44,14 +44,13 @@ void UserInteraction::playGame()
 {
   cout << "Input the number of ships you wish to play with (1-6): ";
   numShips = promptForInt(1, 6);
-
-  system("clear");
-  cout << "Play against human (0) or AI (1)?";
-  hasAi = promptForInt(0,1) == 1;
-
   system("clear");
   cout << "Player 1 place your ships! [A-J][1-9]\n";
   player1->shipPlacement(numShips);
+
+  system("clear");
+  cout << "Play against human (0) or AI (1)? ";
+  hasAi = promptForInt(0,1) == 1;
 
   system("clear");
   if(hasAi){
@@ -108,15 +107,15 @@ void UserInteraction::playGame()
         break;
       case 2:
         if(p1Turn)
-          player1->viewBoard();
+          player1->viewBoard(false);
         else
-          player2->viewBoard();
+          player2->viewBoard(false);
         break;
       case 3:
         if(p1Turn)
-          player2->viewOBoard();
+          player2->viewBoard(true);
         else
-          player1->viewOBoard();
+          player1->viewBoard(true);
         break;
       case 0:
         gameOver = true;

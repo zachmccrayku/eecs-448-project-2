@@ -11,7 +11,7 @@ Board::Board()
 Board::~Board(){}
 
 
-void Board::viewBoard()
+void Board::viewBoard(bool asOpponent)
 {
   cout
     << "Your board:\n"
@@ -19,40 +19,20 @@ void Board::viewBoard()
 
   for(int x = 0; x < ROWS; x++)
   {
-    cout << x + 1 << " ";
+    cout << x + 1 << ' ';
 
-    for(int y = 0; y < COLS; y++)
-      cout << m_grid[x][y].getChar() << " ";
-
-    cout << endl;
-  }
-}
-
-void Board::viewOBoard()
-{
-  cout
-    << "Your attacks:\n"
-    << "  A B C D E F G H I J\n";
-
-  for(int x = 0; x < ROWS; x++)
-  {
-    cout << x + 1 << " ";
-
-    for(int y = 0; y < COLS; y++)
-    {
-      if(m_grid[x][y].getChar() == SHIP)
+    for(int y = 0; y < COLS; y++){
+      if(asOpponent && m_grid[x][y].getChar() == SHIP)
         // Hide enemy ships
         cout << BLANK;
       else
         cout << m_grid[x][y].getChar();
-
-      cout << " ";
-
+      cout << ' ';
     }
+
     cout << endl;
   }
 }
-
 
 void Board::shipPlacement(int numShips)
 {
@@ -62,7 +42,7 @@ void Board::shipPlacement(int numShips)
   for (int i = 1; i <= m_numShips; i++)
   {
     // Show player their current board with ship placements
-    viewBoard();
+    viewBoard(false);
 
     // choose horizontal or vertical ship placement
     if (i != 1)
@@ -110,7 +90,7 @@ void Board::shipPlacement(int numShips)
   }
 
   cout << "Here is your final ship placement:\n";
-  viewBoard();
+  viewBoard(false);
   cout << "\nPress ENTER to Continue ";
   cin.ignore();
   cin.ignore();
@@ -132,7 +112,7 @@ void Board::randomShipPlacement(int numShips){
 
       char orientation = validHorizontally ? HORIZONTAL : VERTICAL;
       if(validHorizontally && validHorizontally && rand() % 2)
-        orientation == VERTICAL;
+        orientation = VERTICAL;
 
       if (orientation == HORIZONTAL)
         for (int j = 0; j < shipSize; j++)
