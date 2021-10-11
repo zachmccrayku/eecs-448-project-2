@@ -22,7 +22,7 @@ An hour-by-hour (per-person) breakdown of time spent on this project.
             <td>0h</td>
             <td>0h</td>
             <td>0h</td>
-            <td>0h</td>
+            <td>.5h</td>
         </tr>
         <tr>
             <th rowspan=8>Implementation</th>
@@ -39,7 +39,7 @@ An hour-by-hour (per-person) breakdown of time spent on this project.
             <td>0h</td>
             <td>0h</td>
             <td>0h</td>
-            <td>0h</td>
+            <td>2.5h</td>
         </tr>
         <tr>
             <td>Add AI Hard mode</td>
@@ -113,7 +113,7 @@ An hour-by-hour (per-person) breakdown of time spent on this project.
             <td>0h</td>
             <td>0h</td>
             <td>0h</td>
-            <td>0h</td>
+            <td>.25h</td>
         </tr>
         <tr>
             <td>Improve documentation</td>
